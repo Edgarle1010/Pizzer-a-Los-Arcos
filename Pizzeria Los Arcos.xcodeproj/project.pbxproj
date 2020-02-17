@@ -1,0 +1,535 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B352121E23F3991B0046A46E /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B352121C23F3991B0046A46E /* FoodCell.swift */; };
+		B352121F23F3991B0046A46E /* FoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B352121D23F3991B0046A46E /* FoodCell.xib */; };
+		B371A44923ED1F1B009C02D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B371A44823ED1F1B009C02D5 /* GoogleService-Info.plist */; };
+		B371A44B23ED2194009C02D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B371A44A23ED2194009C02D5 /* Assets.xcassets */; };
+		B371A44F23ED34F9009C02D5 /* RegisterNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371A44E23ED34F9009C02D5 /* RegisterNumberViewController.swift */; };
+		B37A161B23F2564400B8607F /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37A161A23F2564400B8607F /* OrdersViewController.swift */; };
+		B37A161D23F2579700B8607F /* Orders.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37A161C23F2579700B8607F /* Orders.swift */; };
+		B37A161F23F25A8F00B8607F /* Pizzas.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37A161E23F25A8F00B8607F /* Pizzas.swift */; };
+		B37A162123F2643600B8607F /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37A162023F2643600B8607F /* K.swift */; };
+		B37A162323F2677800B8607F /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37A162223F2677800B8607F /* FoodViewController.swift */; };
+		B37A162523F2694F00B8607F /* BeforeOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37A162423F2694F00B8607F /* BeforeOrderViewController.swift */; };
+		B37EFD2323EE520C004B1A7A /* VericationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37EFD2223EE520C004B1A7A /* VericationCodeViewController.swift */; };
+		B37EFD2523EE58C6004B1A7A /* CreatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37EFD2423EE58C6004B1A7A /* CreatePasswordViewController.swift */; };
+		B3823C6723EE95B7007B0952 /* Pods_Pizzeria_Los_Arcos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3750D44A2B553E2E4B3AEC8E /* Pods_Pizzeria_Los_Arcos.framework */; };
+		B3823C6823EE95B7007B0952 /* Pods_Pizzeria_Los_Arcos.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3750D44A2B553E2E4B3AEC8E /* Pods_Pizzeria_Los_Arcos.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B391C74D23C1904800E821C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B391C74C23C1904800E821C5 /* AppDelegate.swift */; };
+		B391C74F23C1904800E821C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B391C74E23C1904800E821C5 /* SceneDelegate.swift */; };
+		B391C75423C1904800E821C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B391C75223C1904800E821C5 /* Main.storyboard */; };
+		B391C75923C1904900E821C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B391C75723C1904900E821C5 /* LaunchScreen.storyboard */; };
+		B3A2486723EA6FD300D11FE6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A2486623EA6FD300D11FE6 /* RegisterViewController.swift */; };
+		B3A2486923EA8AE200D11FE6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A2486823EA8AE200D11FE6 /* LoginViewController.swift */; };
+		B3A2486B23EA8AF200D11FE6 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A2486A23EA8AF200D11FE6 /* MenuViewController.swift */; };
+		B3A3404E23F4EFEE002F4224 /* ExtraIngredientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A3404D23F4EFEE002F4224 /* ExtraIngredientViewController.swift */; };
+		B3A3405023F4F3C3002F4224 /* ExtraIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A3404F23F4F3C3002F4224 /* ExtraIngredient.swift */; };
+		B3B9013523F0F8E90023F39C /* MenuTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9013423F0F8E90023F39C /* MenuTabBarViewController.swift */; };
+		B3B9013723F0FAF20023F39C /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9013623F0FAF20023F39C /* AccountViewController.swift */; };
+		B3B9013923F1027C0023F39C /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9013823F1027C0023F39C /* WelcomeViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B3823C6923EE95B7007B0952 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B3823C6823EE95B7007B0952 /* Pods_Pizzeria_Los_Arcos.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		06EA3503E2432B1E9F33EC14 /* Pods-Pizzeria Los Arcos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pizzeria Los Arcos.release.xcconfig"; path = "Target Support Files/Pods-Pizzeria Los Arcos/Pods-Pizzeria Los Arcos.release.xcconfig"; sourceTree = "<group>"; };
+		180BEA9D03ED3D5B15223751 /* Pods-Pizzeria Los Arcos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pizzeria Los Arcos.debug.xcconfig"; path = "Target Support Files/Pods-Pizzeria Los Arcos/Pods-Pizzeria Los Arcos.debug.xcconfig"; sourceTree = "<group>"; };
+		3750D44A2B553E2E4B3AEC8E /* Pods_Pizzeria_Los_Arcos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pizzeria_Los_Arcos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B352121C23F3991B0046A46E /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
+		B352121D23F3991B0046A46E /* FoodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodCell.xib; sourceTree = "<group>"; };
+		B371A44823ED1F1B009C02D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B371A44A23ED2194009C02D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B371A44D23ED286D009C02D5 /* Pizzería Los Arcos.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Pizzería Los Arcos.entitlements"; sourceTree = "<group>"; };
+		B371A44E23ED34F9009C02D5 /* RegisterNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNumberViewController.swift; sourceTree = "<group>"; };
+		B37A161A23F2564400B8607F /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
+		B37A161C23F2579700B8607F /* Orders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orders.swift; sourceTree = "<group>"; };
+		B37A161E23F25A8F00B8607F /* Pizzas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pizzas.swift; sourceTree = "<group>"; };
+		B37A162023F2643600B8607F /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
+		B37A162223F2677800B8607F /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
+		B37A162423F2694F00B8607F /* BeforeOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeOrderViewController.swift; sourceTree = "<group>"; };
+		B37EFD2223EE520C004B1A7A /* VericationCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VericationCodeViewController.swift; sourceTree = "<group>"; };
+		B37EFD2423EE58C6004B1A7A /* CreatePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordViewController.swift; sourceTree = "<group>"; };
+		B391C74923C1904800E821C5 /* Pizzería Los Arcos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pizzería Los Arcos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B391C74C23C1904800E821C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B391C74E23C1904800E821C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B391C75323C1904800E821C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B391C75823C1904900E821C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B391C75A23C1904900E821C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3A2486623EA6FD300D11FE6 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		B3A2486823EA8AE200D11FE6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B3A2486A23EA8AF200D11FE6 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		B3A3404D23F4EFEE002F4224 /* ExtraIngredientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraIngredientViewController.swift; sourceTree = "<group>"; };
+		B3A3404F23F4F3C3002F4224 /* ExtraIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraIngredient.swift; sourceTree = "<group>"; };
+		B3B9013423F0F8E90023F39C /* MenuTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTabBarViewController.swift; sourceTree = "<group>"; };
+		B3B9013623F0FAF20023F39C /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		B3B9013823F1027C0023F39C /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B391C74623C1904800E821C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3823C6723EE95B7007B0952 /* Pods_Pizzeria_Los_Arcos.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		93664E2B118D98F33C82C509 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				180BEA9D03ED3D5B15223751 /* Pods-Pizzeria Los Arcos.debug.xcconfig */,
+				06EA3503E2432B1E9F33EC14 /* Pods-Pizzeria Los Arcos.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B391C74023C1904800E821C5 = {
+			isa = PBXGroup;
+			children = (
+				B391C74B23C1904800E821C5 /* Pizzeria Los Arcos */,
+				B391C74A23C1904800E821C5 /* Products */,
+				93664E2B118D98F33C82C509 /* Pods */,
+				F40C411DE8AC472E250A12CA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B391C74A23C1904800E821C5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B391C74923C1904800E821C5 /* Pizzería Los Arcos.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B391C74B23C1904800E821C5 /* Pizzeria Los Arcos */ = {
+			isa = PBXGroup;
+			children = (
+				B371A44D23ED286D009C02D5 /* Pizzería Los Arcos.entitlements */,
+				B391C74C23C1904800E821C5 /* AppDelegate.swift */,
+				B391C74E23C1904800E821C5 /* SceneDelegate.swift */,
+				B371A44A23ED2194009C02D5 /* Assets.xcassets */,
+				B3AA728223E9300E006D399F /* Models */,
+				B3AA728023E92F6F006D399F /* Views */,
+				B3AA728123E92F77006D399F /* Controllers */,
+				B391C75723C1904900E821C5 /* LaunchScreen.storyboard */,
+				B391C75A23C1904900E821C5 /* Info.plist */,
+				B371A44823ED1F1B009C02D5 /* GoogleService-Info.plist */,
+				B37A162023F2643600B8607F /* K.swift */,
+			);
+			path = "Pizzeria Los Arcos";
+			sourceTree = "<group>";
+		};
+		B3AA728023E92F6F006D399F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B391C75223C1904800E821C5 /* Main.storyboard */,
+				B352121C23F3991B0046A46E /* FoodCell.swift */,
+				B352121D23F3991B0046A46E /* FoodCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B3AA728123E92F77006D399F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B37A161A23F2564400B8607F /* OrdersViewController.swift */,
+				B3A2486A23EA8AF200D11FE6 /* MenuViewController.swift */,
+				B3A2486823EA8AE200D11FE6 /* LoginViewController.swift */,
+				B3B9013823F1027C0023F39C /* WelcomeViewController.swift */,
+				B3A2486623EA6FD300D11FE6 /* RegisterViewController.swift */,
+				B371A44E23ED34F9009C02D5 /* RegisterNumberViewController.swift */,
+				B37EFD2223EE520C004B1A7A /* VericationCodeViewController.swift */,
+				B37EFD2423EE58C6004B1A7A /* CreatePasswordViewController.swift */,
+				B3B9013423F0F8E90023F39C /* MenuTabBarViewController.swift */,
+				B3B9013623F0FAF20023F39C /* AccountViewController.swift */,
+				B37A162223F2677800B8607F /* FoodViewController.swift */,
+				B37A162423F2694F00B8607F /* BeforeOrderViewController.swift */,
+				B3A3404D23F4EFEE002F4224 /* ExtraIngredientViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B3AA728223E9300E006D399F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B37A161C23F2579700B8607F /* Orders.swift */,
+				B37A161E23F25A8F00B8607F /* Pizzas.swift */,
+				B3A3404F23F4F3C3002F4224 /* ExtraIngredient.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F40C411DE8AC472E250A12CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3750D44A2B553E2E4B3AEC8E /* Pods_Pizzeria_Los_Arcos.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B391C74823C1904800E821C5 /* Pizzeria Los Arcos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B391C75D23C1904900E821C5 /* Build configuration list for PBXNativeTarget "Pizzeria Los Arcos" */;
+			buildPhases = (
+				54D125249038A06C6A120B5A /* [CP] Check Pods Manifest.lock */,
+				B391C74523C1904800E821C5 /* Sources */,
+				B391C74623C1904800E821C5 /* Frameworks */,
+				B391C74723C1904800E821C5 /* Resources */,
+				F8AC58ECABF72A5F9BFD2FD4 /* [CP] Embed Pods Frameworks */,
+				B3823C6923EE95B7007B0952 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pizzeria Los Arcos";
+			productName = "Pizzeria Los Arcos";
+			productReference = B391C74923C1904800E821C5 /* Pizzería Los Arcos.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B391C74123C1904800E821C5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Edgar López Enríquez";
+				TargetAttributes = {
+					B391C74823C1904800E821C5 = {
+						CreatedOnToolsVersion = 11.3;
+					};
+				};
+			};
+			buildConfigurationList = B391C74423C1904800E821C5 /* Build configuration list for PBXProject "Pizzeria Los Arcos" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B391C74023C1904800E821C5;
+			productRefGroup = B391C74A23C1904800E821C5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B391C74823C1904800E821C5 /* Pizzeria Los Arcos */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B391C74723C1904800E821C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B391C75923C1904900E821C5 /* LaunchScreen.storyboard in Resources */,
+				B371A44923ED1F1B009C02D5 /* GoogleService-Info.plist in Resources */,
+				B352121F23F3991B0046A46E /* FoodCell.xib in Resources */,
+				B371A44B23ED2194009C02D5 /* Assets.xcassets in Resources */,
+				B391C75423C1904800E821C5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		54D125249038A06C6A120B5A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pizzeria Los Arcos-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8AC58ECABF72A5F9BFD2FD4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pizzeria Los Arcos/Pods-Pizzeria Los Arcos-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pizzeria Los Arcos/Pods-Pizzeria Los Arcos-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pizzeria Los Arcos/Pods-Pizzeria Los Arcos-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B391C74523C1904800E821C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3A2486B23EA8AF200D11FE6 /* MenuViewController.swift in Sources */,
+				B391C74D23C1904800E821C5 /* AppDelegate.swift in Sources */,
+				B3B9013923F1027C0023F39C /* WelcomeViewController.swift in Sources */,
+				B37A162523F2694F00B8607F /* BeforeOrderViewController.swift in Sources */,
+				B37A161D23F2579700B8607F /* Orders.swift in Sources */,
+				B371A44F23ED34F9009C02D5 /* RegisterNumberViewController.swift in Sources */,
+				B37EFD2523EE58C6004B1A7A /* CreatePasswordViewController.swift in Sources */,
+				B352121E23F3991B0046A46E /* FoodCell.swift in Sources */,
+				B37A162123F2643600B8607F /* K.swift in Sources */,
+				B3A3405023F4F3C3002F4224 /* ExtraIngredient.swift in Sources */,
+				B37A161F23F25A8F00B8607F /* Pizzas.swift in Sources */,
+				B3A3404E23F4EFEE002F4224 /* ExtraIngredientViewController.swift in Sources */,
+				B3B9013523F0F8E90023F39C /* MenuTabBarViewController.swift in Sources */,
+				B391C74F23C1904800E821C5 /* SceneDelegate.swift in Sources */,
+				B37A162323F2677800B8607F /* FoodViewController.swift in Sources */,
+				B37A161B23F2564400B8607F /* OrdersViewController.swift in Sources */,
+				B3A2486923EA8AE200D11FE6 /* LoginViewController.swift in Sources */,
+				B3A2486723EA6FD300D11FE6 /* RegisterViewController.swift in Sources */,
+				B37EFD2323EE520C004B1A7A /* VericationCodeViewController.swift in Sources */,
+				B3B9013723F0FAF20023F39C /* AccountViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B391C75223C1904800E821C5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B391C75323C1904800E821C5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B391C75723C1904900E821C5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B391C75823C1904900E821C5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B391C75B23C1904900E821C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B391C75C23C1904900E821C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B391C75E23C1904900E821C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 180BEA9D03ED3D5B15223751 /* Pods-Pizzeria Los Arcos.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Pizzeria Los Arcos/Pizzería Los Arcos.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PSBA95AV5R;
+				INFOPLIST_FILE = "Pizzeria Los Arcos/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.edgarlopez.Pizzeria-Los-Arcos";
+				PRODUCT_NAME = "Pizzería Los Arcos";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B391C75F23C1904900E821C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06EA3503E2432B1E9F33EC14 /* Pods-Pizzeria Los Arcos.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Pizzeria Los Arcos/Pizzería Los Arcos.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PSBA95AV5R;
+				INFOPLIST_FILE = "Pizzeria Los Arcos/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.edgarlopez.Pizzeria-Los-Arcos";
+				PRODUCT_NAME = "Pizzería Los Arcos";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B391C74423C1904800E821C5 /* Build configuration list for PBXProject "Pizzeria Los Arcos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B391C75B23C1904900E821C5 /* Debug */,
+				B391C75C23C1904900E821C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B391C75D23C1904900E821C5 /* Build configuration list for PBXNativeTarget "Pizzeria Los Arcos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B391C75E23C1904900E821C5 /* Debug */,
+				B391C75F23C1904900E821C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B391C74123C1904800E821C5 /* Project object */;
+}
