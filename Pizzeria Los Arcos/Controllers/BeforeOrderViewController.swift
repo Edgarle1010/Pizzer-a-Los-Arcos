@@ -7,58 +7,88 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class BeforeOrderViewController: UIViewController {
     
     @IBOutlet weak var smallPctButton: UIButton!
     @IBOutlet weak var mediumPctButton: UIButton!
     @IBOutlet weak var bigPctButton: UIButton!
-    @IBOutlet weak var quantityNumberLabel: UILabel!
     @IBOutlet weak var extraIngredientNumberLabel: UILabel!
     @IBOutlet weak var extraIngredientLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var commentsTextView: UITextView!
-    
-    @IBOutlet weak var quantityStepper: UIStepper!
+    @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var extraIngredientStepper: UIStepper!
+    @IBOutlet weak var halfLabel: UILabel!
     
+    var foodName: String?
+    var foodType: String?
     
-    var pizzasList = PizzasList()
+    var food = FoodMenu()
+    var quantity = [0.5, 1, 2, 3, 4, 5]
     
-    var quantitySplit = 1
+    var quantitySplit: Double = 1
     var extraIngredientSplit = 0
     var oldValue: Double = 0
     
     var sizeCurrent = "Grande"
-    var pizzaName: String?
-    var currentPrice = 0
+    var currentPrice: Double = 0
     var extraPrice = 0
+    var halfPrice: Double = 0
+    var halfName: String?
     var extraIngredients = [String:Int]()
     var lastExtra = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let quantityPickerView = UIPickerView()
+        quantityPickerView.backgroundColor = UIColor(named: "BrandLightBrow")
+        quantityPickerView.delegate = self
+        quantityPickerView.dataSource = self
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.sizeToFit()
+        toolBar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
+        toolBar.setShadowImage(UIImage(), forToolbarPosition: .any)
+        toolBar.isUserInteractionEnabled = true
+        
+        quantityTextField.inputView = quantityPickerView
+        quantityTextField.inputAccessoryView = toolBar
+        
+        quantityPickerView.selectRow(Int(quantitySplit), inComponent: 0, animated: true)
+        
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tap)
+        
         getTotal()
     }
     
     func getTotal() {
-        currentPrice = (pizzasList.getPizzaPrice(name: pizzaName!, size: sizeCurrent) + extraPrice) * quantitySplit
+        if halfPrice == 0 {
+            currentPrice = Double(food.getPizzaPrice(name: foodName!, size: sizeCurrent) + extraPrice) * quantitySplit
+        } else {
+            currentPrice = (Double(food.getPizzaPrice(name: foodName!, size: sizeCurrent) / 2) + halfPrice) + Double(extraPrice)
+        }
+        
         totalLabel.text = "$\(String(currentPrice))"
     }
     
     func resetView() {
+        halfPrice = 0
+        halfLabel.text = ""
         extraPrice = 0
         extraIngredientLabel.text = ""
         extraIngredients.removeAll()
-//        quantityStepper.value = 1
         extraIngredientStepper.value = 0
-//        quantitySplit = 1
-//        quantityNumberLabel.text = "1"
         extraIngredientSplit = 0
         extraIngredientNumberLabel.text = "0"
         oldValue = 0
         
+        view.endEditing(true)
         getTotal()
     }
     
@@ -72,16 +102,11 @@ class BeforeOrderViewController: UIViewController {
         //Make the button that triggered the IBAction selected.
         sender.isSelected = true
         
+        quantitySplit = 1
+        quantityTextField.text = "1"
+        
         //Get the current title of the button that was pressed.
         sizeCurrent = sender.currentTitle!
-        
-        resetView()
-    }
-    
-    @IBAction func quantityValueChanged(_ sender: UIStepper) {
-        
-        quantitySplit = Int(sender.value)
-        quantityNumberLabel.text = String(quantitySplit)
         
         resetView()
     }
@@ -90,7 +115,7 @@ class BeforeOrderViewController: UIViewController {
         if (sender.value>oldValue) {
             oldValue += 1
             //Your Code You Wanted To Perform On Increment
-            performSegue(withIdentifier: "ProOrderToExtra", sender: self)
+            performSegue(withIdentifier: "PreOrderToExtra", sender: self)
         }
         else {
             oldValue=oldValue-1
@@ -115,36 +140,115 @@ class BeforeOrderViewController: UIViewController {
         getTotal()
         
         if (sender.value != 0) {
-            quantityStepper.isEnabled = false
             smallPctButton.isEnabled = false
-            smallPctButton.isHighlighted = true
             mediumPctButton.isEnabled = false
-            mediumPctButton.isHighlighted = true
             bigPctButton.isEnabled = false
-            bigPctButton.isHighlighted = true
+            quantityTextField.isEnabled = false
         } else {
-            quantityStepper.isEnabled = true
             smallPctButton.isEnabled = true
-            smallPctButton.isHighlighted = false
             mediumPctButton.isEnabled = true
-            mediumPctButton.isHighlighted = false
             bigPctButton.isEnabled = true
-            bigPctButton.isHighlighted = false
+            quantityTextField.isEnabled = true
         }
     }
     
     @IBAction func addPressed(_ sender: UIButton) {
         
+        if foodType == "Pizzas" {
+            if let half = halfName {
+                OrdersList.ordersList.append(Orders(foodName: "Mitad: \(foodName!) - Mitad: \(half), \(sizeCurrent)", quantity: Int(quantitySplit), extraIngredient: extraIngredients, price: currentPrice, comments: commentsTextView.text))
+            } else {
+                OrdersList.ordersList.append(Orders(foodName: "\(foodName!), \(sizeCurrent)", quantity: Int(quantitySplit), extraIngredient: extraIngredients, price: currentPrice, comments: commentsTextView.text!))
+            }
+        } else {
+            OrdersList.ordersList.append(Orders(foodName: "\(foodName!)", quantity: Int(quantitySplit), extraIngredient: extraIngredients, price: currentPrice, comments: commentsTextView.text!))
+        }
+        
+        AudioServicesPlayAlertSoundWithCompletion(kSystemSoundID_Vibrate) {
+        }
+        
+        let alert = UIAlertController(title: nil, message: "¡Producto agregado correctamente!", preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        
+        // change to desired number of seconds (in this case 5 seconds)
+        let when = DispatchTime.now() + 1
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            // your code with delay
+            alert.dismiss(animated: true, completion: nil)
+            
+            self.dismiss(animated: true, completion: nil)
+        }
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ProOrderToExtra" {
+        if segue.identifier == "PreOrderToExtra" {
             let destinationVC = segue.destination as! ExtraIngredientViewController
             destinationVC.isModalInPresentation = true
             destinationVC.sizeCurrent = sizeCurrent
             destinationVC.quantity = quantitySplit
+            destinationVC.foodType = foodType
         }
+        
+        if segue.identifier == "PreOrderToHalf" {
+            let destinationVC = segue.destination as! HalfTableViewController
+            destinationVC.isModalInPresentation = true
+            destinationVC.pizzaSize = sizeCurrent
+        }
+    }
+    
+}
+
+
+//MARK: - PickerView Data Source
+
+extension BeforeOrderViewController: UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return quantity.count
+    }
+    
+    
+}
+
+
+//MARK: - PickerView & TextField Delegates
+
+extension BeforeOrderViewController: UIPickerViewDelegate, UITextFieldDelegate {
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if quantity[row] == 0.5 {
+            return String(quantity[row])
+        }
+        return String(format: "%.0f", quantity[row])
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        quantitySplit = quantity[row]
+        if quantitySplit == 0.5 {
+            self.quantityTextField.text = String(quantitySplit)
+            let showMessagePrompt = UIAlertController(title: nil, message: "¿Quieres tu pizza mitad y mitad?", preferredStyle: .alert)
+            showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("Si", comment: "Defalut action"), style: .default, handler: { (_) in
+                self.view.endEditing(true)
+                self.performSegue(withIdentifier: "PreOrderToHalf", sender: self)
+            }))
+            showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .default, handler: { (_) in
+                pickerView.selectRow(1, inComponent: 0, animated: true)
+                self.quantitySplit = 1
+                self.quantityTextField.text = String(format: "%.0f", self.quantitySplit)
+                self.resetView()
+            }))
+            self.present(showMessagePrompt, animated: true, completion: nil)
+            
+        } else {
+            self.quantityTextField.text = String(format: "%.0f", quantitySplit)
+        }
+        
+        resetView()
     }
     
 }

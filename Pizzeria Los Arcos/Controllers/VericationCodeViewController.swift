@@ -37,19 +37,20 @@ class VericationCodeViewController: UIViewController {
             
             Auth.auth().signIn(with: credential) { (authResult, error) in
                 if let error = error {
-                    let showMessagePrompt = UIAlertController(title: "¡Ha ocurrido un problema!", message: "El código de seguirdad es incorrecto", preferredStyle: .alert)
-                    showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defalut action"), style: .default, handler: { (_) in
-                        NSLog(error.localizedDescription)
-                    }))
-                    self.present(showMessagePrompt, animated: true, completion: nil)
-                    return
+                    self.alert(title: "¡Ha ocurrido un problema!", message: error.localizedDescription)
                 } else {
                     //Navigate to the CreatePasswordViewController
                     self.performSegue(withIdentifier: "VerificationCodeToCreatePassword", sender: self)
                 }
             }
         }
-        
+    }
+    
+    func alert(title: String?, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        return
     }
     
 }

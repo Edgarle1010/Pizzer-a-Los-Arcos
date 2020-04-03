@@ -17,6 +17,12 @@ class AccountViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.parent?.navigationItem.title = "Cuenta"
+        self.parent?.navigationItem.rightBarButtonItem?.isEnabled = false
+        self.parent?.navigationItem.rightBarButtonItem?.tintColor = .clear
+    }
+    
     @IBAction func logOutPressed(_ sender: UIButton) {
         
         do {

@@ -7,24 +7,20 @@
 //
 
 import UIKit
+import WebKit
 
 class TermsDetailsViewController: UIViewController {
-
+    @IBOutlet weak var termsWebView: WKWebView!
+    
+    var document: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let htmlpath = Bundle.main.path(forResource: document, ofType: "html")
+        let url = URL(fileURLWithPath: htmlpath!)
+        let request = URLRequest(url: url)
+        termsWebView.load(request)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -7,3 +7,21 @@
 //
 
 import Foundation
+
+// counters/${ID}
+struct Counter {
+    let numShards: Int
+
+    init(numShards: Int) {
+        self.numShards = numShards
+    }
+}
+
+// counters/${ID}/shards/${NUM}
+struct Shard {
+    let count: Int
+
+    init(count: Int) {
+        self.count = count
+    }
+}
