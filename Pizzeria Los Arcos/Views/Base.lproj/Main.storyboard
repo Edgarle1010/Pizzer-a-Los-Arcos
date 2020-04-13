@@ -301,29 +301,12 @@
                                     <segue destination="n0i-5a-vpk" kind="show" id="lmF-xB-0Xk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KuL-C9-Rma">
-                                <rect key="frame" x="10" y="414" width="0.0" height="60"/>
-                                <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="I6P-YS-OsM"/>
-                                    <constraint firstAttribute="width" id="J0r-CV-SYo"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <state key="normal" title="Siguiente">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="nextButtonPressed:" destination="mSf-OU-j8Q" eventType="touchUpInside" id="NXh-WR-TR2"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="NzY-q4-bQ6" firstAttribute="leading" secondItem="ece-iw-ACv" secondAttribute="leading" id="0pT-oj-pq1"/>
                             <constraint firstItem="3X8-EM-Ssg" firstAttribute="top" secondItem="NzY-q4-bQ6" secondAttribute="bottom" constant="10" id="Fet-yi-uPn"/>
                             <constraint firstItem="3X8-EM-Ssg" firstAttribute="leading" secondItem="ece-iw-ACv" secondAttribute="leading" id="KWM-0G-Ol7"/>
-                            <constraint firstItem="KuL-C9-Rma" firstAttribute="leading" secondItem="ZiP-iH-tny" secondAttribute="leadingMargin" constant="-10" id="MSd-Jg-7UU"/>
-                            <constraint firstItem="KuL-C9-Rma" firstAttribute="top" secondItem="ZiP-iH-tny" secondAttribute="top" constant="414" id="Tle-wT-q49"/>
                             <constraint firstItem="3X8-EM-Ssg" firstAttribute="trailing" secondItem="ece-iw-ACv" secondAttribute="trailing" id="eDD-vP-ccL"/>
                             <constraint firstItem="NzY-q4-bQ6" firstAttribute="top" secondItem="ece-iw-ACv" secondAttribute="top" id="xN2-O7-bJF"/>
                             <constraint firstItem="NzY-q4-bQ6" firstAttribute="trailing" secondItem="ece-iw-ACv" secondAttribute="trailing" id="zGH-sa-2yh"/>
@@ -1304,7 +1287,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="edgarl@compuservice.com.mx" placeholder="e-mail" adjustsFontSizeToFit="NO" minimumFontSize="17" disabledBackground=" " translatesAutoresizingMaskIntoConstraints="NO" id="4Hi-HI-4bf">
+                                    <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="edgar_fl1012@hotmail.com" placeholder="e-mail" adjustsFontSizeToFit="NO" minimumFontSize="17" disabledBackground=" " translatesAutoresizingMaskIntoConstraints="NO" id="4Hi-HI-4bf">
                                         <rect key="frame" x="50" y="101" width="349" height="25.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES" textContentType="email"/>
@@ -1595,7 +1578,7 @@
                                     <constraint firstItem="Gn0-vG-4tM" firstAttribute="leading" secondItem="Vk2-9z-BPb" secondAttribute="leading" constant="15" id="enG-qg-ZaS"/>
                                     <constraint firstItem="Gn0-vG-4tM" firstAttribute="top" secondItem="XWu-3P-Jhi" secondAttribute="bottom" constant="10" id="oaq-Rk-d1p"/>
                                     <constraint firstItem="d1r-kC-BpZ" firstAttribute="top" secondItem="Hkc-SX-w3I" secondAttribute="bottom" constant="5" id="or7-4Z-mB6"/>
-                                    <constraint firstItem="d1r-kC-BpZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Vk2-9z-BPb" secondAttribute="leading" symbolic="YES" id="pC1-sy-J6r"/>
+                                    <constraint firstItem="d1r-kC-BpZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Vk2-9z-BPb" secondAttribute="leading" constant="20" symbolic="YES" id="pC1-sy-J6r"/>
                                     <constraint firstItem="Gn0-vG-4tM" firstAttribute="top" secondItem="d1r-kC-BpZ" secondAttribute="bottom" constant="10" id="ql6-R6-wT3"/>
                                     <constraint firstItem="Hkc-SX-w3I" firstAttribute="top" secondItem="BKX-mV-Z66" secondAttribute="bottom" constant="30" id="xGX-k6-oyl"/>
                                     <constraint firstAttribute="trailing" secondItem="d1r-kC-BpZ" secondAttribute="trailing" constant="15" id="ymx-96-sUJ"/>

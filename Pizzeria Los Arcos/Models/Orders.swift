@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Orders {
+struct Orders: Codable {
     let foodName: String
     let quantity: Int
     let extraIngredient: [String:Int]

@@ -281,6 +281,9 @@ PODS:
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
   - PromisesObjC (1.2.8)
+  - SVProgressHUD (2.2.6):
+    - SVProgressHUD/Core (= 2.2.6)
+  - SVProgressHUD/Core (2.2.6)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -288,6 +291,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Firestore
   - FirebaseFirestoreSwift
+  - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
 
 SPEC REPOS:
   trunk:
@@ -315,6 +319,15 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
 
+EXTERNAL SOURCES:
+  SVProgressHUD:
+    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
+
+CHECKOUT OPTIONS:
+  SVProgressHUD:
+    :commit: 0a9abb56a8d5c1ffc0078babc07fb11ff2fa2f22
+    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
+
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
@@ -339,7 +352,8 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  SVProgressHUD: de812b4f0e1d65358f0064416473174ae619843f
 
-PODFILE CHECKSUM: 5fd4c614fa1df2213a5227adfb49322e56ae70e9
+PODFILE CHECKSUM: 1b199c14b38b300b4247fe4c89c8e76489b7ac52
 
 COCOAPODS: 1.8.4

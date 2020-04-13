@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class VericationCodeViewController: UIViewController {
     @IBOutlet weak var numberLabel: UILabel!
@@ -35,7 +36,9 @@ class VericationCodeViewController: UIViewController {
         if let verificationCode = verificationCodeText.text {
             let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID!, verificationCode: verificationCode)
             
+            SVProgressHUD.show()
             Auth.auth().signIn(with: credential) { (authResult, error) in
+                SVProgressHUD.dismiss()
                 if let error = error {
                     self.alert(title: "¡Ha ocurrido un problema!", message: error.localizedDescription)
                 } else {

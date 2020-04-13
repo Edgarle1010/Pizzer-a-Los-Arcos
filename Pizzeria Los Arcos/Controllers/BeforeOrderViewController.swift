@@ -22,6 +22,8 @@ class BeforeOrderViewController: UIViewController {
     @IBOutlet weak var extraIngredientStepper: UIStepper!
     @IBOutlet weak var halfLabel: UILabel!
     
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+    
     var foodName: String?
     var foodType: String?
     
@@ -160,8 +162,15 @@ class BeforeOrderViewController: UIViewController {
             } else {
                 OrdersList.ordersList.append(Orders(foodName: "\(foodName!), \(sizeCurrent)", quantity: Int(quantitySplit), extraIngredient: extraIngredients, price: currentPrice, comments: commentsTextView.text!))
             }
-        } else {
-            OrdersList.ordersList.append(Orders(foodName: "\(foodName!)", quantity: Int(quantitySplit), extraIngredient: extraIngredients, price: currentPrice, comments: commentsTextView.text!))
+        }
+        
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(OrdersList.ordersList)
+            try data.write(to: self.dataFilePath!)
+        } catch {
+            print("Error encoding item array, \(error)")
         }
         
         AudioServicesPlayAlertSoundWithCompletion(kSystemSoundID_Vibrate) {

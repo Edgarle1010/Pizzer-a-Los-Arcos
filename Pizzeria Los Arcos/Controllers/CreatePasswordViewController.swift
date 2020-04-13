@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class CreatePasswordViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
@@ -23,12 +24,15 @@ class CreatePasswordViewController: UIViewController {
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         if let password = passwordField.text, let user = Auth.auth().currentUser {
+            SVProgressHUD.show()
             user.updatePassword(to: password, completion: { (error) in
+                SVProgressHUD.dismiss()
                 if let error = error {
                     self.alert(title: "¡Ha ocurrido un error!", message: error.localizedDescription)
                 }
                 
                 user.updateEmail(to: self.email!, completion: { (error) in
+                    SVProgressHUD.dismiss()
                     if let error = error {
                         self.alert(title: "¡Ha ocurrido un error!", message: error.localizedDescription)
                     }

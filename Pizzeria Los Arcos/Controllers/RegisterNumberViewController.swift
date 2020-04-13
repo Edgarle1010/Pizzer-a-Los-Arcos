@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class RegisterNumberViewController: UIViewController {
     
@@ -24,7 +25,9 @@ class RegisterNumberViewController: UIViewController {
         if telefoneNumberField.text != "" {
             if var phoneNumber = telefoneNumberField.text {
                 phoneNumber = "+52" + phoneNumber
+                SVProgressHUD.show()
                 PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
+                    SVProgressHUD.dismiss()
                     if let error = error {
                         self.alert(title: "¡Ha ocurrido un problema!", message: "\(error.localizedDescription)")
                     } else {

@@ -20,6 +20,8 @@ class OrdersViewController: UIViewController {
         tableView.dataSource = self
         
         tableView.register(UINib(nibName: "ListOrderCell", bundle: nil), forCellReuseIdentifier: "listOrderCell")
+        
+        tableView.tableFooterView = UIView()
 
     }
     

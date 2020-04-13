@@ -16,6 +16,8 @@ class BeforeOrderThirdViewController: UIViewController {
     @IBOutlet weak var commentsTextView: UITextView!
     @IBOutlet weak var totalLabel: UILabel!
     
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+    
     var foodType: String?
     var foodName: String?
     var food = FoodMenu()
@@ -91,7 +93,17 @@ class BeforeOrderThirdViewController: UIViewController {
     }
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
+        
         OrdersList.ordersList.append(Orders(foodName: "\(foodName!), \(nameFlavor!)", quantity: Int(quantitySplit), extraIngredient: extraIngredients, price: currentPrice, comments: commentsTextView.text!))
+        
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(OrdersList.ordersList)
+            try data.write(to: self.dataFilePath!)
+        } catch {
+            print("Error encoding item array, \(error)")
+        }
         
         AudioServicesPlayAlertSoundWithCompletion(kSystemSoundID_Vibrate) {
         }

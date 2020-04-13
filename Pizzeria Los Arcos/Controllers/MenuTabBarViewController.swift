@@ -10,8 +10,11 @@ import UIKit
 import Firebase
 import AudioToolbox
 import CoreLocation
+import SVProgressHUD
 
 class MenuTabBarViewController: UITabBarController, UITabBarControllerDelegate {
+    
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     
     let db = Firestore.firestore()
     let locationManager = CLLocationManager()
@@ -37,6 +40,17 @@ class MenuTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do {
+                OrdersList.ordersList = try decoder.decode([Orders].self, from: data)
+            } catch {
+                print("Error decoding item array, \(error)")
+            }
+            
+        }
+        
         self.tabBar.items?[1].badgeValue = String(OrdersList.ordersList.count)
     }
     
@@ -74,7 +88,9 @@ class MenuTabBarViewController: UITabBarController, UITabBarControllerDelegate {
                                         i += 1
                                     }
                                     self.getID { (id) in
+                                        SVProgressHUD.show()
                                         self.db.collection("orders").document("\(id!)").setData(docData) { (error) in
+                                            SVProgressHUD.dismiss()
                                             if let error = error {
                                                 self.alert(title: "¡Ha ocurrido un problema al enviar el pedido!", message: "\(error)")
                                             } else {
@@ -86,6 +102,16 @@ class MenuTabBarViewController: UITabBarController, UITabBarControllerDelegate {
                                                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                                                     self.present(alert, animated: true, completion: nil)
                                                     OrdersList.ordersList.removeAll()
+                                                    
+                                                    let encoder = PropertyListEncoder()
+                                                    
+                                                    do {
+                                                        let data = try encoder.encode(OrdersList.ordersList)
+                                                        try data.write(to: self.dataFilePath!)
+                                                    } catch {
+                                                        print("Error encoding item array, \(error)")
+                                                    }
+                                                    
                                                     self.selectedIndex = 0
                                                     self.viewWillAppear(false)
                                                 }
@@ -139,8 +165,10 @@ class MenuTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func loadWaitTime(completionHandler:@escaping waitTimeClouser) {
+        SVProgressHUD.show()
         db.collection("waitTime").document("time")
             .getDocument { documentSnapshot, error in
+                SVProgressHUD.dismiss()
                 var waitTime: String?
                 
                 guard let document = documentSnapshot else {
@@ -162,8 +190,10 @@ class MenuTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func checkBaned(documentID: String, completionHandler:@escaping banedStatusClouser) {
+        SVProgressHUD.show()
         db.collection("users").document(documentID)
             .getDocument { documentSnapshot, error in
+                SVProgressHUD.dismiss()
                 var banedStatus: Bool?
                 
                 guard let document = documentSnapshot else {
@@ -185,8 +215,10 @@ class MenuTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func checkService(completionHandler:@escaping serviceStatusClouser) {
+        SVProgressHUD.show()
         db.collection("messages").document("current")
             .getDocument { documentSnapshot, error in
+                SVProgressHUD.dismiss()
                 var serviceStatus: Bool?
                 
                 guard let document = documentSnapshot else {
@@ -209,8 +241,10 @@ class MenuTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func getID(completionHandler:@escaping idClouser) {
+        SVProgressHUD.show()
         db.collection("data").document("stats")
             .getDocument { documentSnapshot, error in
+                SVProgressHUD.dismiss()
                 var id: Int?
                 
                 guard let document = documentSnapshot else {
