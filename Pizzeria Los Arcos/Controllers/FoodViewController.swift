@@ -47,6 +47,8 @@ class FoodViewController: UIViewController {
         tableView.dataSource = self
         
         tableView.register(UINib(nibName: "FoodCell", bundle: nil), forCellReuseIdentifier: "listCell")
+        
+        tableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {

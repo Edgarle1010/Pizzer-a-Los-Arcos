@@ -98,7 +98,7 @@ class MenuTabBarViewController: UITabBarController, UITabBarControllerDelegate {
                                                 }
                                                 
                                                 self.loadWaitTime { (waitTime) in
-                                                    let alert = UIAlertController(title: "¡Pedido enviado correctamente!", message: "Puedes pasar por el en \(waitTime!) minutos", preferredStyle: UIAlertController.Style.alert)
+                                                    let alert = UIAlertController(title: "¡Pedido enviado correctamente!", message: "Puedes pasar por él en \(waitTime!) minutos.\nRecuerda pasar por tu pedido a Pizzría Los Arcos Gómez Morin", preferredStyle: UIAlertController.Style.alert)
                                                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                                                     self.present(alert, animated: true, completion: nil)
                                                     OrdersList.ordersList.removeAll()
@@ -133,7 +133,7 @@ class MenuTabBarViewController: UITabBarController, UITabBarControllerDelegate {
                         } else {
                             AudioServicesPlayAlertSoundWithCompletion(kSystemSoundID_Vibrate) {
                             }
-                            let alert = UIAlertController(title: "¡Ha ocurrido un problema!", message: "Tu cuenta ha sido limitada para hacer pedidos por uso el uso incorrecto de la aplicación", preferredStyle: UIAlertController.Style.alert)
+                            let alert = UIAlertController(title: "¡Ha ocurrido un problema!", message: "Tu cuenta ha sido limitada para hacer pedidos por el uso incorrecto de la servicio. Comunicate a soporte si deseas revisar tu caso", preferredStyle: UIAlertController.Style.alert)
                             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                             self.present(alert, animated: true, completion: nil)
                             return

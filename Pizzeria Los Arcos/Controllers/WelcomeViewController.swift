@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
 class WelcomeViewController: UIViewController {
+    
+    let db = Firestore.firestore()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -23,6 +26,12 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        AppManager.shared.appContainer = self
+        AppManager.shared.showApp()
     }
 
 }

@@ -44,6 +44,7 @@ class BeforeOrderThirdViewController: UIViewController {
             case K.Bebidas.Licuado.name:
                 flavors = ["Plátano", "Nuez"]
             default:
+                flavors = ["Ninguno"]
                 break
             }
         } else if foodType == "Postres" {

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="orderCell" rowHeight="144" id="KGk-i7-Jjw" customClass="OrderCell" customModule="Pizzeria_Los_Arcos_GM_Admin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="427" height="144"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="427" height="144"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDt-Cd-A9s">
+                        <rect key="frame" x="0.0" y="0.0" width="427" height="144"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Client ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8f-G7-lsz">
+                                <rect key="frame" x="10" y="10" width="76.5" height="26.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uB1-aT-MRv">
+                                <rect key="frame" x="10" y="74.5" width="179.5" height="26.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID Pedido:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xzj-cS-4pT">
+                                        <rect key="frame" x="0.0" y="0.0" width="92" height="26.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="idPedido" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sh4-Kg-PwT">
+                                        <rect key="frame" x="100" y="0.0" width="79.5" height="26.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Client Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVR-iP-b7D">
+                                <rect key="frame" x="10" y="44.5" width="94" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fecha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YV4-GL-17z">
+                                <rect key="frame" x="10" y="109" width="46.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="BrandLightColor"/>
+                        <constraints>
+                            <constraint firstItem="MVR-iP-b7D" firstAttribute="leading" secondItem="fDt-Cd-A9s" secondAttribute="leading" constant="10" id="9Aq-II-dZ3"/>
+                            <constraint firstItem="YV4-GL-17z" firstAttribute="leading" secondItem="fDt-Cd-A9s" secondAttribute="leading" constant="10" id="H5e-ZU-Wlo"/>
+                            <constraint firstItem="uB1-aT-MRv" firstAttribute="top" secondItem="MVR-iP-b7D" secondAttribute="bottom" constant="10" id="QZy-n0-cJl"/>
+                            <constraint firstItem="t8f-G7-lsz" firstAttribute="top" secondItem="fDt-Cd-A9s" secondAttribute="top" constant="10" id="SDG-Dm-huP"/>
+                            <constraint firstItem="t8f-G7-lsz" firstAttribute="leading" secondItem="fDt-Cd-A9s" secondAttribute="leading" constant="10" id="cZf-ml-jPy"/>
+                            <constraint firstItem="uB1-aT-MRv" firstAttribute="leading" secondItem="fDt-Cd-A9s" secondAttribute="leading" constant="10" id="ctb-rZ-EEu"/>
+                            <constraint firstItem="YV4-GL-17z" firstAttribute="top" secondItem="uB1-aT-MRv" secondAttribute="bottom" constant="8" symbolic="YES" id="d8M-pW-Rl1"/>
+                            <constraint firstAttribute="bottom" secondItem="YV4-GL-17z" secondAttribute="bottom" constant="14.5" id="mtQ-PB-nYG"/>
+                            <constraint firstItem="MVR-iP-b7D" firstAttribute="top" secondItem="t8f-G7-lsz" secondAttribute="bottom" constant="8" symbolic="YES" id="xHU-6g-1lG"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="fDt-Cd-A9s" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1Jy-Hg-Del"/>
+                    <constraint firstAttribute="trailing" secondItem="fDt-Cd-A9s" secondAttribute="trailing" id="IbC-By-1Sy"/>
+                    <constraint firstItem="fDt-Cd-A9s" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Kvf-G0-PIn"/>
+                    <constraint firstAttribute="bottom" secondItem="fDt-Cd-A9s" secondAttribute="bottom" id="hU7-Jt-M5d"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="clientIDLabel" destination="t8f-G7-lsz" id="slx-Q2-bpq"/>
+                <outlet property="clientNameLabel" destination="MVR-iP-b7D" id="eGf-k6-otJ"/>
+                <outlet property="dateLabel" destination="YV4-GL-17z" id="Vh7-zg-3B2"/>
+                <outlet property="orderIDLabel" destination="Sh4-Kg-PwT" id="MpD-K8-eBs"/>
+            </connections>
+            <point key="canvasLocation" x="74.637681159420296" y="71.651785714285708"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="BrandLightColor">
+            <color red="0.94901960784313721" green="0.90196078431372551" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

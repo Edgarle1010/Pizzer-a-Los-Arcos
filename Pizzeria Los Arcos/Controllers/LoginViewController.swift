@@ -15,7 +15,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +35,7 @@ class LoginViewController: UIViewController {
                     self.present(showMessagePrompt, animated: true, completion: nil)
                     return
                 }
+                
                 //Navigate to the MenuViewController
                 self.performSegue(withIdentifier: "LoginToMenu", sender: self)
             }
