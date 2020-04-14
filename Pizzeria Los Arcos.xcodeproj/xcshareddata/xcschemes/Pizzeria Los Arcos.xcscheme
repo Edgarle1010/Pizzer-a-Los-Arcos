@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B391C74823C1904800E821C5"
-               BuildableName = "Pizzeri&#x301;a Los Arcos.app"
+               BuildableName = "Pizzeri&#x301;a Los Arcos Go&#x301;mez Morin.app"
                BlueprintName = "Pizzeria Los Arcos"
                ReferencedContainer = "container:Pizzeria Los Arcos.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B391C74823C1904800E821C5"
-            BuildableName = "Pizzeri&#x301;a Los Arcos.app"
+            BuildableName = "Pizzeri&#x301;a Los Arcos Go&#x301;mez Morin.app"
             BlueprintName = "Pizzeria Los Arcos"
             ReferencedContainer = "container:Pizzeria Los Arcos.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B391C74823C1904800E821C5"
-            BuildableName = "Pizzeri&#x301;a Los Arcos.app"
+            BuildableName = "Pizzeri&#x301;a Los Arcos Go&#x301;mez Morin.app"
             BlueprintName = "Pizzeria Los Arcos"
             ReferencedContainer = "container:Pizzeria Los Arcos.xcodeproj">
          </BuildableReference>
