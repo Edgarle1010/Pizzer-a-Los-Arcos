@@ -13,6 +13,8 @@ class OrdersViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var totalLabel: UILabel!
     
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,6 +86,15 @@ extension OrdersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             OrdersList.ordersList.remove(at: indexPath.row)
+            
+            let encoder = PropertyListEncoder()
+            do {
+                let data = try encoder.encode(OrdersList.ordersList)
+                try data.write(to: self.dataFilePath!)
+            } catch {
+                print("Error encoding item array, \(error)")
+            }
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
             AudioServicesPlayAlertSoundWithCompletion(kSystemSoundID_Vibrate) {
             }

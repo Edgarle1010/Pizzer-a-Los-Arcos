@@ -33,5 +33,20 @@ class WelcomeViewController: UIViewController {
         AppManager.shared.appContainer = self
         AppManager.shared.showApp()
     }
+    
+    @IBAction func guestButtonPressed(_ sender: UIButton) {
+        
+        var viewController: UIViewController
+        viewController = storyboard?.instantiateViewController(withIdentifier: "MainViewController") as! MenuTabBarViewController
+        self.navigationController?.pushViewController(viewController, animated: true)
+        
+        let showMessagePrompt = UIAlertController(title: "Has iniciado sesión como invitado", message: "Podrás ver el menú y usar sus funciones pero no te será posible realizar pedidos.", preferredStyle: .alert)
+        showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defalut action"), style: .default, handler: { (_) in
+            NSLog("Guest user login.")
+        }))
+        self.present(showMessagePrompt, animated: true, completion: nil)
+        
+    }
+    
 
 }

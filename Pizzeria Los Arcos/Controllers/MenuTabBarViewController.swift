@@ -98,7 +98,7 @@ class MenuTabBarViewController: UITabBarController, UITabBarControllerDelegate {
                                                 }
                                                 
                                                 self.loadWaitTime { (waitTime) in
-                                                    let alert = UIAlertController(title: "¡Pedido enviado correctamente!", message: "Puedes pasar por él en \(waitTime!) minutos.\nRecuerda pasar por tu pedido a Pizzría Los Arcos Gómez Morin", preferredStyle: UIAlertController.Style.alert)
+                                                    let alert = UIAlertController(title: "¡Pedido enviado correctamente!", message: "Puedes pasar por él en \(waitTime!) minutos.\nRecuerda pasar por tu pedido a Pizzería Los Arcos Gómez Morin", preferredStyle: UIAlertController.Style.alert)
                                                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                                                     self.present(alert, animated: true, completion: nil)
                                                     OrdersList.ordersList.removeAll()
@@ -139,6 +139,12 @@ class MenuTabBarViewController: UITabBarController, UITabBarControllerDelegate {
                             return
                         }
                     }
+                } else {
+                    let showMessagePrompt = UIAlertController(title: "Has iniciado sesión como invitado", message: "Para poder relizar tu pedido es necesario que te registres, reabre la App y completa el proceso de registro o inicia sesión en caso de ya tener una cuenta.", preferredStyle: .alert)
+                    showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defalut action"), style: .default, handler: { (_) in
+                        NSLog("Guest user try to order")
+                    }))
+                    self.present(showMessagePrompt, animated: true, completion: nil)
                 }
             }))
             showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .default, handler: { (_) in

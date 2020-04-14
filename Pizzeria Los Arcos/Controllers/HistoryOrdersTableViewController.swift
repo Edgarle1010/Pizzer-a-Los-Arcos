@@ -16,7 +16,7 @@ class HistoryOrdersTableViewController: UITableViewController {
     
     var orders: [OrderHistory] = []
     var orderID: String?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,45 +25,52 @@ class HistoryOrdersTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         
         loadOrders()
-
+        
     }
     
     func loadOrders() {
         
         SVProgressHUD.show()
         
-        guard let client = Auth.auth().currentUser?.phoneNumber else { fatalError() }
-        
-        db.collection("orders").whereField("client", isEqualTo: client)
-            .getDocuments { (querySnapshot, error) in
-                
-                self.orders = []
-                
-                guard let documents = querySnapshot?.documents else {
-                    print("Error fetching documents: \(error!)")
-                    return
-                }
-                
-                self.tableView.reloadData()
-                
-                for doc in documents {
-                    let data = doc.data()
-                    if let clientID = data["client"] as? String, let clientName = data["clientName"] as? String, let orderID = doc.documentID as? String, let date = data["date"] as? Double {
-                        let newOrder = OrderHistory(clientID: clientID, clientName: clientName, orderID: orderID, date: date)
-                        self.orders.append(newOrder)
-                        self.orders = self.orders.sorted(by: { $0.date < $1.date })
-                        
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                            SVProgressHUD.dismiss()
+        if let client = Auth.auth().currentUser?.phoneNumber {
+            db.collection("orders").whereField("client", isEqualTo: client)
+                .getDocuments { (querySnapshot, error) in
+                    
+                    self.orders = []
+                    
+                    guard let documents = querySnapshot?.documents else {
+                        print("Error fetching documents: \(error!)")
+                        return
+                    }
+                    
+                    self.tableView.reloadData()
+                    
+                    for doc in documents {
+                        let data = doc.data()
+                        if let clientID = data["client"] as? String, let clientName = data["clientName"] as? String, let orderID = doc.documentID as? String, let date = data["date"] as? Double {
+                            let newOrder = OrderHistory(clientID: clientID, clientName: clientName, orderID: orderID, date: date)
+                            self.orders.append(newOrder)
+                            self.orders = self.orders.sorted(by: { $0.date < $1.date })
+                            
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                                SVProgressHUD.dismiss()
+                            }
                         }
                     }
-                }
+            }
+        } else {
+            let showMessagePrompt = UIAlertController(title: "Has iniciado sesión como invitado", message: "No tienes historial de pedidos", preferredStyle: .alert)
+            showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defalut action"), style: .default, handler: { (_) in
+                NSLog("Guest user login.")
+            }))
+            self.present(showMessagePrompt, animated: true, completion: nil)
         }
+        
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return orders.count
     }
@@ -99,5 +106,5 @@ class HistoryOrdersTableViewController: UITableViewController {
             destinationVC.orderID = orderID
         }
     }
-
+    
 }
