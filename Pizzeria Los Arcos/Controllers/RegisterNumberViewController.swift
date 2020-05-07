@@ -41,6 +41,7 @@ class RegisterNumberViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
+        
     }
     
     @IBAction func verificationCodePressed(_ sender: UIButton) {
@@ -56,8 +57,16 @@ class RegisterNumberViewController: UIViewController {
                         UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
                         UserDefaults.standard.set(phoneNumber, forKey: "phoneNumber")
                         
-                        //Navigate to the VerificationCodeViewController
-                        self.performSegue(withIdentifier: "RegisterToVerificationCode", sender: self)
+                        if let vcs = self.navigationController?.viewControllers {
+                            let previousVC = vcs[vcs.count - 2]
+                            if previousVC is LoginViewController {
+                                self.performSegue(withIdentifier: "VerifyAccountToVerificationCode", sender: self)
+                            } else {
+                                //Navigate to the VerificationCodeViewController
+                                self.performSegue(withIdentifier: "RegisterToVerificationCode", sender: self)
+                            }
+                        }
+                        
                     }
                 }
             }

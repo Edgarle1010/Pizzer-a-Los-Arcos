@@ -8,8 +8,10 @@
 
 import UIKit
 
-class FoodViewController: UIViewController {
+class FoodViewController: UIViewController, ModalTransitionListener {
+    
     @IBOutlet weak var tableView: UITableView!
+    
     var foodName: String?
     var foodType: String?
     var food = FoodMenu()
@@ -18,6 +20,8 @@ class FoodViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ModalTransitionMediator.instance.setListener(listener: self)
         
         switch foodType {
         case "Pizzas":
@@ -53,6 +57,23 @@ class FoodViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.title = foodType
+        
+        syncBadge()
+    }
+    
+    func popoverDismissed() {
+        self.navigationController?.dismiss(animated: true, completion: nil)
+        syncBadge()
+    }
+    
+    func syncBadge() {
+        let notificationButton = SSBadgeButton()
+        notificationButton.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        notificationButton.setImage(UIImage(systemName: "cart")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        notificationButton.badgeEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 15)
+        notificationButton.badge = String(OrdersList.ordersList.count)
+
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: notificationButton)
     }
     
 }
@@ -61,7 +82,7 @@ extension FoodViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return foodData.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! FoodCell
         cell.title.text = foodData[indexPath.row].name
@@ -71,18 +92,31 @@ extension FoodViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         return cell
     }
-
-
+    
+    
 }
 
 extension FoodViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let description = foodData[indexPath.row].description
         foodName = foodData[indexPath.row].name
         switch foodType {
         case "Pizzas":
-            performSegue(withIdentifier: "MenuToPreOrder", sender: self)
+            performSegue(withIdentifier: "MenuToPizzas", sender: self)
+        case "Hamburguesas", "Ensaladas", "Platillos", "Mariscos":
+            performSegue(withIdentifier: "MenuToBurguer", sender: self)
+        case "Desayunos":
+            if foodName == K.Desayunos.HuevosChilaquiles.name || foodName == K.Desayunos.Montadas.name || foodName == K.Desayunos.Huevos.name {
+                performSegue(withIdentifier: "MenuToBreakfastsEggs2", sender: self)
+            } else if description.contains("revueltos o estrellados") {
+                performSegue(withIdentifier: "MenuToBreakfastsEggs", sender: self)
+            } else {
+                performSegue(withIdentifier: "MenuToBreakfasts", sender: self)
+            }
         case "Bebidas", "Postres", "Nieves":
             performSegue(withIdentifier: "MenuToOrderThird", sender: self)
+        case "Kids":
+            performSegue(withIdentifier: "MenuToKids", sender: self)
         default:
             performSegue(withIdentifier: "MenuToPreOrderSecond", sender: self)
             break
@@ -95,20 +129,72 @@ extension FoodViewController: UITableViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "MenuToPreOrder" {
-            let destinationVC = segue.destination as! BeforeOrderViewController
+        if segue.identifier == "MenuToPizzas" {
+            let destinationVC = segue.destination as! PizzasViewController
             destinationVC.foodName = foodName
             destinationVC.foodType = foodType
         }
         
-        if segue.identifier == "MenuToPreOrderSecond" {
-            let destinationVC = segue.destination as! BeforeOrderSecondViewController
+        if segue.identifier == "MenuToBurguer" {
+            let destinationVC = segue.destination as! BurgerViewController
             destinationVC.foodName = foodName
             destinationVC.foodType = foodType
+        }
+        
+        if segue.identifier == "MenuToBreakfasts" {
+            let destinationVC = segue.destination as! BreakfastsViewController
+            destinationVC.foodName = foodName
+            destinationVC.foodType = foodType
+        }
+        
+        if segue.identifier == "MenuToBreakfastsEggs" {
+            let destinationVC = segue.destination as! BreakfastsEggsViewController
+            destinationVC.foodName = foodName
+            destinationVC.foodType = foodType
+        }
+        
+        if segue.identifier == "MenuToBreakfastsEggs2" {
+            let destinationVC = segue.destination as! BreakfastsEggs2ViewController
+            destinationVC.foodName = foodName
+            destinationVC.foodType = foodType
+            
+            if foodName == K.Desayunos.HuevosChilaquiles.name {
+                destinationVC.bsection1 = "Estilo"
+                destinationVC.boption1Section1 = "Revueltos"
+                destinationVC.boption2Section1 = "Estrellados"
+                destinationVC.bsection2 = "Chilaquiles"
+                destinationVC.boption1Section2 = "Rojos"
+                destinationVC.boption2Section2 = ""
+                destinationVC.boption3Section2 = "Verdes"
+                
+            } else if foodName == K.Desayunos.Montadas.name {
+                destinationVC.bsection1 = "Enchiladas"
+                destinationVC.boption1Section1 = "Rojas"
+                destinationVC.boption2Section1 = "Verdes"
+                destinationVC.bsection2 = "Ingrediente"
+                destinationVC.boption1Section2 = "Queso"
+                destinationVC.boption2Section2 = "Picadillo"
+                destinationVC.boption3Section2 = "Pollo"
+                
+            } else if foodName == K.Desayunos.Huevos.name {
+                destinationVC.bsection1 = "Estilo"
+                destinationVC.boption1Section1 = "Revueltos"
+                destinationVC.boption2Section1 = "Estrellados"
+                destinationVC.bsection2 = "Ingrediente"
+                destinationVC.boption1Section2 = "Tocino"
+                destinationVC.boption2Section2 = "Jamón"
+                destinationVC.boption3Section2 = "Chorizo"
+            }
         }
         
         if segue.identifier == "MenuToOrderThird" {
             let destinationVC = segue.destination as! BeforeOrderThirdViewController
+            destinationVC.foodName = foodName
+            destinationVC.foodType = foodType
+        }
+        
+        if segue.identifier == "MenuToKids" {
+            let destinationVC = segue.destination as! KidsViewController
             destinationVC.foodName = foodName
             destinationVC.foodType = foodType
         }

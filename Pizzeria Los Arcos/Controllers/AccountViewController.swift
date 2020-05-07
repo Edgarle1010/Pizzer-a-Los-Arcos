@@ -55,11 +55,38 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         do {
             try Auth.auth().signOut()
+            
+            let domain = Bundle.main.bundleIdentifier!
+            UserDefaults.standard.removePersistentDomain(forName: domain)
+            UserDefaults.standard.synchronize()
+            print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
+            
+            removeImage(itemName: "Items", fileExtension: "plist")
+            
             navigationController?.popToRootViewController(animated: true)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
     }
+    
+    func removeImage(itemName:String, fileExtension: String) {
+        let fileManager = FileManager.default
+        let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
+        let nsUserDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+        let paths = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
+        guard let dirPath = paths.first else {
+            return
+        }
+        let filePath = "\(dirPath)/\(itemName).\(fileExtension)"
+        do {
+            try fileManager.removeItem(atPath: filePath)
+            OrdersList.ordersList.removeAll()
+            print("Here")
+        } catch let error as NSError {
+            print(error.debugDescription)
+        }}
+    
+    //MARK: - TableView Datasource & Delegated Methods
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return cellData.count

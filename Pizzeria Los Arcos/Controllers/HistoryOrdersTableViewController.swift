@@ -54,11 +54,11 @@ class HistoryOrdersTableViewController: UITableViewController {
                             
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
-                                SVProgressHUD.dismiss()
                             }
                         }
                     }
             }
+            SVProgressHUD.dismiss()
         } else {
             let showMessagePrompt = UIAlertController(title: "Has iniciado sesión como invitado", message: "No tienes historial de pedidos", preferredStyle: .alert)
             showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defalut action"), style: .default, handler: { (_) in

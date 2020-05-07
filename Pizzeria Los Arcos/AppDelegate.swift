@@ -158,3 +158,91 @@ extension AppDelegate: MessagingDelegate {
     }
 }
 
+
+//MARK: - Translate errors messages
+
+extension AuthErrorCode {
+    var description: String? {
+        switch self {
+        case .emailAlreadyInUse:
+            return "Este correo ya está siendo usado por otro usuario"
+        case .userDisabled:
+            return "Este usuario ha sido deshabilitado"
+        case .operationNotAllowed:
+            return "Operación no permitida"
+        case .invalidEmail:
+            return "Correo electrónico no valido"
+        case .wrongPassword:
+            return "Contraseña incorrecta"
+        case .userNotFound:
+            return "No se encontró una cuenta con el correo especificado"
+        case .networkError:
+            return "Problema al intentar conectar al servidor"
+        case .weakPassword:
+            return "Contraseña muy débil o no válida"
+        case .missingEmail:
+            return "Hace falta registrar un correo electrónico"
+        case .internalError:
+            return "Error interno"
+        case .invalidCustomToken:
+            return "Token personalizado invalido"
+        case .tooManyRequests:
+            return "Ya se han enviado muchas solicitudes al servidor"
+        default:
+            return nil
+        }
+    }
+}
+
+    extension FirestoreErrorCode {
+        var description: String? {
+            switch self {
+            case .cancelled:
+                return "Operación cancelada"
+            case .unknown:
+                return "Error desconocido"
+            case .invalidArgument:
+                return "Argumento no valido"
+            case .notFound:
+                return "No se encotró el documento"
+            case .alreadyExists:
+                return "El documento que se pretende crear ya existe"
+            case .permissionDenied:
+                return "No tienes permisos para realizar esta operación"
+            case .aborted:
+                return "Operación abortada"
+            case .outOfRange:
+                return "Rango invalido"
+            case .unimplemented:
+                return "Esta operación no ha sido implementada o no es soportada aún"
+            case .internal:
+                return "Error interno"
+            case .unavailable:
+                return "Por el momento el servicio no está disponible, intenta más tarde"
+            case .unauthenticated:
+                return "Usuario no autenticado"
+            default:
+                return nil
+            }
+        } }
+
+public extension Error {
+    var localizedDescription: String {
+        let error = self as NSError
+        if error.domain == AuthErrorDomain {
+            if let code = AuthErrorCode(rawValue: error.code) {
+                if let errorString = code.description {
+                    return errorString
+                }
+            }
+        }else if error.domain == FirestoreErrorDomain {
+            if let code = FirestoreErrorCode(rawValue: error.code) {
+                if let errorString = code.description {
+                   return errorString
+                }
+            }
+        }
+        return error.localizedDescription
+    } }
+
+

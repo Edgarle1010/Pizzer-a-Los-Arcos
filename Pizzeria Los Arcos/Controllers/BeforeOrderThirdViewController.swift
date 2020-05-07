@@ -38,11 +38,11 @@ class BeforeOrderThirdViewController: UIViewController {
             case K.Bebidas.Refrescos.name:
                 flavors = ["Coca Cola", "Sprite", "Fresca", "Sidral Mundet", "Naranja", "Coca Cola Light", "Coca Cola sin azucar"]
             case K.Bebidas.Cappuccino.name:
-                flavors = ["Original", "Vainilla"]
+                flavors = ["Vainilla"]
             case K.Bebidas.Chocolate.name:
                 flavors = ["Frío", "Caliente"]
             case K.Bebidas.Licuado.name:
-                flavors = ["Plátano", "Nuez"]
+                flavors = ["Nuez", "Plátano", "Mixto"]
             default:
                 flavors = ["Ninguno"]
                 break
@@ -59,7 +59,7 @@ class BeforeOrderThirdViewController: UIViewController {
             case K.NievesMalteadas.Malteada.name:
                 flavors = ["Piña colada", "Vainilla", "Fresa", "Chocolate"]
             default:
-                flavors = ["Vainilla", "Fresa", "Combinada"]
+                flavors = ["Vainilla", "Fresa", "Chocolate", "Combinada"]
                 break
             }
         }
@@ -91,6 +91,10 @@ class BeforeOrderThirdViewController: UIViewController {
         view.addGestureRecognizer(tap)
         
         getTotal()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        ModalTransitionMediator.instance.sendPopoverDismissed(modelChanged: true)
     }
     
     @IBAction func addButtonPressed(_ sender: UIButton) {

@@ -11,7 +11,7 @@ struct K {
     struct PizzasM {
         
         struct LosArcos {
-            static let name = "Pizza Los Arcos"
+            static let name = "Los Arcos"
             static let description = "Jamón, salami, jamón de pavo y pimiento morrón."
         }
         
@@ -226,7 +226,7 @@ struct K {
         
         struct HuevosDivorciados {
             static let name = "Huevos divorciados"
-            static let description = "Dos huevos, uno bañado con salsa verde y el otro con salsa roja y chilaquiles."
+            static let description = "Dos huevos estrellados, uno bañado con salsa verde y el otro con salsa roja y chilaquiles."
         }
         
         struct HuevosRancheros {
@@ -241,12 +241,12 @@ struct K {
         
         struct HuevosChilaquiles {
             static let name = "Huevos con chilaquiles"
-            static let description = "Dos huevos (estrellados o revueltos) y chilaquiles (rojos o verdes)."
+            static let description = "Dos huevos (revueltos o estrellados) y chilaquiles (rojos o verdes)."
         }
         
         struct DesayunoNorteño {
             static let name = "Desayuno norteño"
-            static let description = "Huevos estrellados o revueltos, fajitas de arrachera y torta de papa."
+            static let description = "Huevos revueltos o estrellados, fajitas de arrachera y torta de papa."
         }
         
         struct Montadas {
@@ -255,8 +255,8 @@ struct K {
         }
         
         struct Huevos {
-            static let name = "Revueltos o estrellados"
-            static let description = "Con tocino, jamón o chorizo."
+            static let name = "Huevos"
+            static let description = "Dos huevos revueltos o estrellados. Con tocino, jamón o chorizo."
         }
         
         struct HuevosMachaca {
@@ -379,7 +379,7 @@ struct K {
         
         struct Cappuccino {
             static let name = "Cappuccino"
-            static let description = "Original o vainilla (355 ml.)"
+            static let description = "Vainilla (355 ml.)"
         }
         
         struct Chocolate {
@@ -389,7 +389,7 @@ struct K {
         
         struct Licuado {
             static let name = "Licuado"
-            static let description = "Plátano o nuez (355 ml.)"
+            static let description = "Nuez, plátano o mixto (355 ml.)"
         }
         
         struct Leche {
@@ -558,6 +558,59 @@ struct K {
         struct TocinoOthers {
             static let name = "Tocino (2 tiras)"
         }
+        
+        struct CarneRes {
+            static let name = "Carne de res"
+        }
+        
+        struct CarnePollo {
+            static let name = "Carne de pollo"
+        }
+        
+        struct TortaPapa {
+            static let name = "Torta de papa"
+        }
+        
+        struct Rajas {
+            static let name = "Rajas"
+        }
+        
+        struct ChuletaAhumada {
+            static let name = "Chuleta ahumada"
+        }
+        
+        struct PapasFrancesa {
+            static let name = "Papas francesas"
+        }
+        
+        struct Huevo {
+            static let name = "Huevo extra"
+        }
+        
+        struct FajitasRes {
+            static let name = "Fajitas de res"
+        }
+        
+        struct HotCake {
+            static let name = "Hotcake"
+        }
+        
+        struct ChilaquilesRojos {
+            static let name = "Chilaquiles rojos"
+        }
+        
+        struct ChilaquilesVerdes {
+            static let name = "Chilaquiles verdes"
+        }
+        
+        struct PechugaPollo {
+            static let name = "Pechuga de pollo"
+        }
+        
+        struct Verdura {
+            static let name = "Verdura"
+        }
+        
     }
     
     struct SizeM {

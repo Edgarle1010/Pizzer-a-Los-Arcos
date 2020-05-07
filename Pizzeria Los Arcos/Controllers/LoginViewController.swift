@@ -14,12 +14,27 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var recoverPasswordLabel: UILabel!
+    @IBOutlet weak var registerAccount: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.isNavigationBarHidden = false
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.tapFunction))
+        let registerTap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.registerTapFunction))
+        recoverPasswordLabel.addGestureRecognizer(tap)
+        registerAccount.addGestureRecognizer(registerTap)
+        
+        // Create attributed string
+        let myAttribute = [ NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue ]
+        let myAttrRecover = NSAttributedString(string: recoverPasswordLabel.text!, attributes: myAttribute)
+        let myAttrRegister = NSAttributedString(string: registerAccount.text!, attributes: myAttribute)
+
+        // Set attributed text on a UILabel
+        recoverPasswordLabel.attributedText = myAttrRecover
+        registerAccount.attributedText = myAttrRegister
     }
     
     @IBAction func loginPressed(_ sender: UIButton) {
@@ -40,6 +55,14 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "LoginToMenu", sender: self)
             }
         }
+    }
+    
+    @objc func tapFunction(sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "RecoverPasswordToVerifyAccounnt", sender: self)
+    }
+    
+    @objc func registerTapFunction(sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "LoginToRegistry", sender: self)
     }
     
 }

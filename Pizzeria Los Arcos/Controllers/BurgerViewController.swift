@@ -1,5 +1,5 @@
 //
-//  BeforeOrderSecondViewController.swift
+//  BurgerViewController.swift
 //  Pizzeria Los Arcos
 //
 //  Created by Edgar López Enríquez on 26/02/20.
@@ -9,7 +9,7 @@
 import UIKit
 import AudioToolbox
 
-class BeforeOrderSecondViewController: UIViewController {
+class BurgerViewController: UIViewController {
     
     @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var extraIngredientNumberLabel: UILabel!
@@ -24,7 +24,7 @@ class BeforeOrderSecondViewController: UIViewController {
     var foodType: String?
     
     var food = FoodMenu()
-    var quantity = [1, 2, 3, 4, 5]
+    var quantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     var quantitySplit: Double = 1
     var extraIngredientSplit = 0
     var extraIngredients = [String:Int]()
@@ -54,7 +54,7 @@ class BeforeOrderSecondViewController: UIViewController {
         quantityTextField.inputView = quantityPickerView
         quantityTextField.inputAccessoryView = toolBar
         
-        quantityPickerView.selectRow(Int(quantitySplit), inComponent: 0, animated: true)
+        quantityPickerView.selectRow(Int(quantitySplit-1), inComponent: 0, animated: true)
         
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
@@ -62,13 +62,17 @@ class BeforeOrderSecondViewController: UIViewController {
         getTotal()
 
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        ModalTransitionMediator.instance.sendPopoverDismissed(modelChanged: true)
+    }
 
     @IBAction func extraIngredientValueChange(_ sender: UIStepper) {
         
         if (sender.value>oldValue) {
             oldValue += 1
             //Your Code You Wanted To Perform On Increment
-            performSegue(withIdentifier: "PreOrderSecondToExtra", sender: self)
+            performSegue(withIdentifier: "BurguerToExtra", sender: self)
         }
         else {
             oldValue=oldValue-1
@@ -83,14 +87,14 @@ class BeforeOrderSecondViewController: UIViewController {
                 extraIngredientLabel.text?.append("\(data.key)")
                 extraPrice += data.value
             }
-            
-            getTotal()
-            
-            if (sender.value != 0) {
-                quantityTextField.isEnabled = false
-            } else {
-                quantityTextField.isEnabled = true
-            }
+        }
+        
+        if (sender.value != 0) {
+            quantityTextField.isEnabled = false
+            quantityTextField.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        } else {
+            quantityTextField.isEnabled = true
+            quantityTextField.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
         
         extraIngredientSplit = Int(sender.value)
@@ -128,21 +132,6 @@ class BeforeOrderSecondViewController: UIViewController {
         }
     }
     
-    func resetView() {
-        
-        extraPrice = 0
-        extraIngredientLabel.text = ""
-        extraIngredients.removeAll()
-        extraIngredientStepper.value = 0
-        extraIngredientSplit = 0
-        extraIngredientNumberLabel.text = "0"
-        oldValue = 0
-        
-        view.endEditing(true)
-        
-        getTotal()
-    }
-    
     func getTotal() {
         
         switch foodType {
@@ -156,8 +145,6 @@ class BeforeOrderSecondViewController: UIViewController {
             currentPrice = Double(food.mariscos.filter{$0.name == foodName}[0].price + extraPrice) * quantitySplit
         case "Desayunos":
             currentPrice = Double(food.desayunos.filter{$0.name == foodName}[0].price + extraPrice) * quantitySplit
-        case "Kids":
-            currentPrice = Double(food.kids.filter{$0.name == foodName}[0].price + extraPrice) * quantitySplit
         default: break
         }
         
@@ -165,10 +152,10 @@ class BeforeOrderSecondViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "PreOrderSecondToExtra" {
+        if segue.identifier == "BurguerToExtra" {
             let destinationVC = segue.destination as! ExtraIngredientViewController
             destinationVC.isModalInPresentation = true
-            destinationVC.quantity = quantitySplit
+            destinationVC.quantity = Int(quantitySplit)
             destinationVC.foodType = foodType
         }
     }
@@ -177,7 +164,7 @@ class BeforeOrderSecondViewController: UIViewController {
 
 //MARK: - PickerView Data Source
 
-extension BeforeOrderSecondViewController: UIPickerViewDataSource {
+extension BurgerViewController: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -193,7 +180,7 @@ extension BeforeOrderSecondViewController: UIPickerViewDataSource {
 
 //MARK: - PickerView & TextField Delegates
 
-extension BeforeOrderSecondViewController: UIPickerViewDelegate, UITextFieldDelegate {
+extension BurgerViewController: UIPickerViewDelegate, UITextFieldDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return String(quantity[row])
@@ -201,10 +188,9 @@ extension BeforeOrderSecondViewController: UIPickerViewDelegate, UITextFieldDele
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         quantitySplit = Double(quantity[row])
-        self.quantityTextField.text = String(format: "%.0f", quantitySplit)
+        quantityTextField.text = String(format: "%.0f", quantitySplit)
         
-        resetView()
+        getTotal()
     }
     
 }
-

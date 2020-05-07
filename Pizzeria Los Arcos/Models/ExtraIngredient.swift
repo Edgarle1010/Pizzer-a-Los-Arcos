@@ -29,6 +29,26 @@ class ExtraPizza: Extra {
     
 }
 
+class ExtraDesayunos: Extra {
+    
+}
+
+class ExtraHamburguesa: Extra {
+    
+}
+
+class ExtraEnsaladas: Extra {
+    
+}
+
+class ExtraPlatillos: Extra {
+    
+}
+
+class ExtraMariscos: Extra {
+    
+}
+
 class ExtraOthers: Extra {
     
 }

@@ -53,10 +53,9 @@ class HalfTableViewController: UITableViewController {
         pizzaName = pizza.name
         pizzaPrice = Double(pizza.price) / 2
         
-        if let backVC = presentingViewController as? BeforeOrderViewController {
+        if let backVC = presentingViewController as? PizzasViewController {
             backVC.halfLabel.text = "Mitad: \(pizzaName) ($\(pizzaPrice))"
             backVC.halfPrice = Double(pizzaPrice)
-            backVC.quantitySplit = 1
             backVC.halfName = pizzaName
             backVC.viewDidLoad()
             

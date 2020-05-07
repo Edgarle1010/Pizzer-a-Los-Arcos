@@ -34,38 +34,46 @@ class CreatePasswordViewController: UIViewController {
                         self.alert(title: "¡Ha ocurrido un error!", message: error.localizedDescription)
                     }
                     
-                    user.updateEmail(to: self.email!, completion: { (error) in
-                        SVProgressHUD.dismiss()
-                        if let error = error {
-                            self.alert(title: "¡Ha ocurrido un error!", message: error.localizedDescription)
-                        }
-                        let changeRequest = user.createProfileChangeRequest()
-                        if let name = UserDefaults.standard.string(forKey: "name"), let lastName = UserDefaults.standard.string(forKey: "lastname") {
-                            changeRequest.displayName = "\(name) \(lastName)"
-                            changeRequest.commitChanges { (error) in
-                                if let client = Auth.auth().currentUser?.phoneNumber, let clientName = Auth.auth().currentUser?.displayName {
-                                    let docData: [String: Any] = [
-                                        "clientName": clientName,
-                                        "streaks": 0,
-                                        "baned": false
-                                    ]
-                                    self.db.collection("users").document(client).setData(docData) { err in
-                                        if let err = err {
-                                            print("Error writing document: \(err)")
-                                        } else {
-                                            print("Document successfully written!")
+                    if let email = self.email {
+                        user.updateEmail(to: email, completion: { (error) in
+                            SVProgressHUD.dismiss()
+                            if let error = error {
+                                self.alert(title: "¡Ha ocurrido un error!", message: error.localizedDescription)
+                            }
+                            let changeRequest = user.createProfileChangeRequest()
+                            if let name = UserDefaults.standard.string(forKey: "name"), let lastName = UserDefaults.standard.string(forKey: "lastname") {
+                                changeRequest.displayName = "\(name) \(lastName)"
+                                changeRequest.commitChanges { (error) in
+                                    if let client = Auth.auth().currentUser?.phoneNumber, let clientName = Auth.auth().currentUser?.displayName {
+                                        let docData: [String: Any] = [
+                                            "clientName": clientName,
+                                            "streaks": 0,
+                                            "baned": false
+                                        ]
+                                        self.db.collection("users").document(client).setData(docData) { err in
+                                            if let err = err {
+                                                print("Error writing document: \(err)")
+                                            } else {
+                                                print("Document successfully written!")
+                                            }
                                         }
                                     }
                                 }
                             }
-                        }
-                    })
+                        })
+                        self.performSegue(withIdentifier: "CreatePasswordToMenu", sender: self)
                         
-                    self.performSegue(withIdentifier: "CreatePasswordToMenu", sender: self)
-                    
-                    let alert = UIAlertController(title: "¡Felicidades!", message: "Tu usuario se ha creado correctamente. Por favor no olvides tu usuario ni tu contraseña", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                        let alert = UIAlertController(title: "¡Felicidades!", message: "Tu usuario se ha creado correctamente. Por favor no olvides tu usuario ni tu contraseña", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                        
+                    } else {
+                        self.performSegue(withIdentifier: "CreatePasswordToMenu", sender: self)
+                        
+                        let alert = UIAlertController(title: "Inicio de sesión automático", message: "Tu contraseña se ha restablecido correctamente. Tu correo electrónico es: \(user.email!)", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 })
             }
         } else {
