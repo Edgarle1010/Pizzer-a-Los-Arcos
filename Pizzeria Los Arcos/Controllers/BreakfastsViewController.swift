@@ -96,7 +96,7 @@ class BreakfastsViewController: UIViewController {
         if (sender.value>oldValue) {
             oldValue += 1
             //Your Code You Wanted To Perform On Increment
-            performSegue(withIdentifier: "PreOrderFourToExtra", sender: self)
+            performSegue(withIdentifier: "BreakfastsToExtra", sender: self)
         } else {
             oldValue=oldValue-1
             //Your Code You Wanted To Perform On Decrement
@@ -163,7 +163,7 @@ class BreakfastsViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "PreOrderFourToExtra" {
+        if segue.identifier == "BreakfastsToExtra" {
             let destinationVC = segue.destination as! ExtraIngredientViewController
             destinationVC.isModalInPresentation = true
             destinationVC.sizeCurrent = sizeCurrent

@@ -174,6 +174,55 @@ class ExtraIngredientViewController: UIViewController {
                     
                     dismiss(animated: true, completion: nil)
                 }
+            }
+            
+        } else if foodType == "Platillos" {
+            
+            if let backVC = presentingViewController as? SaucersViewController {
+                
+                if backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] != nil {
+                    let showMessagePrompt = UIAlertController(title: "¡Ha ocurrido un problema!", message: "El ingrediente extra seleccionado ya esta agregado, por favor selecciona otro.", preferredStyle: .alert)
+                    showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defalut action"), style: .default, handler: { (_) in
+                    }))
+                    self.present(showMessagePrompt, animated: true, completion: nil)
+                    return
+                } else {
+                    backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] = priceExtra
+                    backVC.extraIngredientLabel.text = ""
+                    priceExtra = 0
+                    for data in backVC.extraIngredients {
+                        backVC.extraIngredientLabel.text?.append("\(data.key)")
+                        priceExtra += data.value
+                    }
+                    backVC.extraPrice = Double(priceExtra) * Double(quantity)
+                    backVC.viewDidLoad()
+                    
+                    dismiss(animated: true, completion: nil)
+                }
+                
+            }
+            
+            if let backVC = presentingViewController as? BurgerViewController {
+                
+                if backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] != nil {
+                    let showMessagePrompt = UIAlertController(title: "¡Ha ocurrido un problema!", message: "El ingrediente extra seleccionado ya esta agregado, por favor selecciona otro.", preferredStyle: .alert)
+                    showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defalut action"), style: .default, handler: { (_) in
+                    }))
+                    self.present(showMessagePrompt, animated: true, completion: nil)
+                    return
+                } else {
+                    backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] = priceExtra
+                    backVC.extraIngredientLabel.text = ""
+                    priceExtra = 0
+                    for data in backVC.extraIngredients {
+                        backVC.extraIngredientLabel.text?.append("\(data.key)")
+                        priceExtra += data.value
+                    }
+                    backVC.extraPrice = Int(Double(priceExtra) * Double(quantity))
+                    backVC.viewDidLoad()
+                    
+                    dismiss(animated: true, completion: nil)
+                }
                 
             }
             

@@ -58,14 +58,16 @@ class HistoryOrdersTableViewController: UITableViewController {
                         }
                     }
             }
-            SVProgressHUD.dismiss()
         } else {
             let showMessagePrompt = UIAlertController(title: "Has iniciado sesión como invitado", message: "No tienes historial de pedidos", preferredStyle: .alert)
             showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defalut action"), style: .default, handler: { (_) in
                 NSLog("Guest user login.")
             }))
+            navigationController?.popViewController(animated: true)
             self.present(showMessagePrompt, animated: true, completion: nil)
         }
+        
+        SVProgressHUD.dismiss()
         
     }
     

@@ -78,7 +78,8 @@ struct FoodMenu {
                         , description: K.Platillos.Espagueti.description, price: 42),
                      Platillos(name: K.Platillos.SopaTortilla.name, description: K.Platillos.SopaTortilla.description, price: 38),
                      Platillos(name: K.Platillos.EnchiladasLosArcos.name, description: K.Platillos.EnchiladasLosArcos.description, price: 68),
-                     Platillos(name: K.Platillos.Enchiladas.name, description: K.Platillos.Enchiladas.description, price: 64),
+                     Platillos(name: K.Platillos.EnchiladasColorado.name, description: K.Platillos.EnchiladasColorado.description, price: 64),
+                     Platillos(name: K.Platillos.EnchiladasVerde.name, description: K.Platillos.EnchiladasVerde.description, price: 64),
                      Platillos(name: K.Platillos.TacosPicadillo.name, description: K.Platillos.TacosPicadillo.description, price: 50),
                      Platillos(name: K.Platillos.Flautas.name, description: K.Platillos.Flautas.description, price: 50)]
     

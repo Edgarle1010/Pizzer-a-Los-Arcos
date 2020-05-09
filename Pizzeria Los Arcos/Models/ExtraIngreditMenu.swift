@@ -53,7 +53,13 @@ struct ExtraIngredientMenu {
                  ExtraPizza(name: K.ExtraM.Frijoles.name, size: K.SizeM.Grande.size, price: 10),
                  ExtraPizza(name: K.ExtraM.Jalapenos.name, size: K.SizeM.Chica.size, price: 5),
                  ExtraPizza(name: K.ExtraM.Jalapenos.name, size: K.SizeM.Medina.size, price: 8),
-                 ExtraPizza(name: K.ExtraM.Jalapenos.name, size: K.SizeM.Grande.size, price: 10),]
+                 ExtraPizza(name: K.ExtraM.Jalapenos.name, size: K.SizeM.Grande.size, price: 10),
+                 ExtraPizza(name: K.ExtraM.Ranch.name, size: K.SizeM.Chica.size, price: 5),
+                 ExtraPizza(name: K.ExtraM.Ranch.name, size: K.SizeM.Medina.size, price: 5),
+                 ExtraPizza(name: K.ExtraM.Ranch.name, size: K.SizeM.Grande.size, price: 5),
+                 ExtraPizza(name: K.ExtraM.QuesoParmesano.name, size: K.SizeM.Chica.size, price: 5),
+                 ExtraPizza(name: K.ExtraM.QuesoParmesano.name, size: K.SizeM.Medina.size, price: 5),
+                 ExtraPizza(name: K.ExtraM.QuesoParmesano.name, size: K.SizeM.Grande.size, price: 5)]
     
     let desayunos = [ExtraDesayunos(name: K.ExtraM.TortaPapa.name, price: 8),
                      ExtraDesayunos(name: K.ExtraM.Frijoles.name, price: 0),

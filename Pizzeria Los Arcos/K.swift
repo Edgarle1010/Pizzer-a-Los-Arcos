@@ -122,7 +122,7 @@ struct K {
         
         struct DeVerduras {
             static let name = "Ensalada de verduras"
-            static let description = ""
+            static let description = "Lechuga, tomate, coliflor, pepino y zanahoria."
         }
     }
     
@@ -135,12 +135,12 @@ struct K {
         
         struct SopaTortilla {
             static let name = "Sopa de tortilla"
-            static let description = ""
+            static let description = "Servida con aguacate y queso."
         }
         
         struct FajitasArrachera {
             static let name = "Fajitas de arrachera"
-            static let description = ""
+            static let description = "Acompañadas de verduras y frijolitos."
         }
         
         struct FajitasPollo {
@@ -150,12 +150,12 @@ struct K {
         
         struct PechugaEmpanizada {
             static let name = "Pechuga empanizada"
-            static let description = ""
+            static let description = "Acompañada de papas a la francesa, rajas con crema, frijolitos y porción de verduras."
         }
         
         struct PechugaChipotle {
             static let name = "Pechuga al chipotle"
-            static let description = ""
+            static let description = "Acompañada de arroz, papas francesas y porción de verduras."
         }
         
         struct EnchiladasLosArcos {
@@ -163,9 +163,14 @@ struct K {
             static let description = "Con salsa de la casa, rellenas de picadillo, pollo o queso."
         }
         
-        struct Enchiladas {
-            static let name = "Enchiladas (4)"
-            static let description = "Colorado (picadillo o queso).\nSalsa verde (picadillo, pollo o queso)."
+        struct EnchiladasColorado {
+            static let name = "Enchiladas de colorado (4)"
+            static let description = "Picadillo, pollo o queso."
+        }
+        
+        struct EnchiladasVerde {
+            static let name = "Enchiladas en salsa verde (4)"
+            static let description = "Picadillo, pollo o queso."
         }
         
         struct TacosPicadillo {
@@ -174,8 +179,8 @@ struct K {
         }
         
         struct Flautas{
-            static let name = "Flautas"
-            static let description = ""
+            static let name = "Flautas (5)"
+            static let description = "Acompañadas de verdura, rellenas de  carne desebrada"
         }
     }
     
@@ -188,7 +193,7 @@ struct K {
         
         struct FileteEmpanizado {
             static let name = "Filete empanizado"
-            static let description = ""
+            static let description = "Acompañado de arroz y porción de verduras."
         }
         
         struct CamaronesRancheros {
@@ -198,12 +203,12 @@ struct K {
         
         struct FileteVeracruzana {
             static let name = "Filete a la veracruzana"
-            static let description = ""
+            static let description = "Acompañado de caldo de verduras."
         }
         
         struct FileteChipotle {
             static let name = "Filete al chipotle"
-            static let description = ""
+            static let description = "Filete empanizado bañado en crema de chipotle, acompañado de arroz y porción de verduras."
         }
     }
     
@@ -609,6 +614,14 @@ struct K {
         
         struct Verdura {
             static let name = "Verdura"
+        }
+        
+        struct Ranch {
+            static let name = "Ranch"
+        }
+        
+        struct QuesoParmesano {
+            static let name = "Queso parmesano"
         }
         
     }

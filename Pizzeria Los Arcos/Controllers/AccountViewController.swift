@@ -13,12 +13,15 @@ import MapKit
 class AccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var logOutButton: UIButton!
     
     let headerTitles = [" "," "," "]
     let cellData = [["Historial de pedidos"], ["Como llegar", "Llamar"], ["Comentarios"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        logOutButton.layer.cornerRadius = 20
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -124,7 +127,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         if cell == "Historial de pedidos" {
             performSegue(withIdentifier: "MoreToHistory", sender: self)
         } else if cell == "Como llegar" {
-            UIApplication.shared.open(NSURL(string: "http://maps.apple.com/?q=Los+Arcos+Gomez")! as URL)
+            UIApplication.shared.open(NSURL(string: "http://maps.apple.com/?daddr=Los+Arcos+Gomez+Morin+Cuauhtemoc,14&dirflg=d&t=h")! as URL)
         } else if cell == "Llamar" {
             if let url = URL(string: "tel://6255834400") {
                 if UIApplication.shared.canOpenURL(url) {

@@ -1,5 +1,5 @@
 //
-//  BeforeOrderThirdViewController.swift
+//  DrinksViewController.swift
 //  Pizzeria Los Arcos
 //
 //  Created by Edgar López Enríquez on 01/03/20.
@@ -9,7 +9,7 @@
 import UIKit
 import AudioToolbox
 
-class BeforeOrderThirdViewController: UIViewController {
+class DrinksViewController: UIViewController {
     
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var quantityTextField: UITextField!
@@ -37,6 +37,8 @@ class BeforeOrderThirdViewController: UIViewController {
             switch foodName {
             case K.Bebidas.Refrescos.name:
                 flavors = ["Coca Cola", "Sprite", "Fresca", "Sidral Mundet", "Naranja", "Coca Cola Light", "Coca Cola sin azucar"]
+            case K.Bebidas.FuzeTea.name:
+                flavors = ["Claro", "Oscuro"]
             case K.Bebidas.Cappuccino.name:
                 flavors = ["Vainilla"]
             case K.Bebidas.Chocolate.name:
@@ -144,7 +146,7 @@ class BeforeOrderThirdViewController: UIViewController {
     
 }
 
-extension BeforeOrderThirdViewController: UIPickerViewDataSource {
+extension DrinksViewController: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -159,7 +161,7 @@ extension BeforeOrderThirdViewController: UIPickerViewDataSource {
     }
 }
 
-extension BeforeOrderThirdViewController: UIPickerViewDelegate {
+extension DrinksViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == self.pickerView {
             return flavors[row]

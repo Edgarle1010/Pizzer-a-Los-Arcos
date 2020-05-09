@@ -104,7 +104,12 @@ extension FoodViewController: UITableViewDelegate {
         case "Pizzas":
             performSegue(withIdentifier: "MenuToPizzas", sender: self)
         case "Hamburguesas", "Ensaladas", "Platillos", "Mariscos":
-            performSegue(withIdentifier: "MenuToBurguer", sender: self)
+            if foodName == K.Platillos.EnchiladasLosArcos.name || foodName == K.Platillos.EnchiladasColorado.name || foodName == K.Platillos.EnchiladasVerde.name {
+                performSegue(withIdentifier: "MenuToSaucers", sender: self)
+            } else {
+                performSegue(withIdentifier: "MenuToBurguer", sender: self)
+            }
+            
         case "Desayunos":
             if foodName == K.Desayunos.HuevosChilaquiles.name || foodName == K.Desayunos.Montadas.name || foodName == K.Desayunos.Huevos.name {
                 performSegue(withIdentifier: "MenuToBreakfastsEggs2", sender: self)
@@ -114,7 +119,11 @@ extension FoodViewController: UITableViewDelegate {
                 performSegue(withIdentifier: "MenuToBreakfasts", sender: self)
             }
         case "Bebidas", "Postres", "Nieves":
-            performSegue(withIdentifier: "MenuToOrderThird", sender: self)
+            if foodName!.contains("Vaso") || foodName!.contains("Jarra") || foodName == K.Bebidas.Agua.name || foodName == K.Bebidas.Cafe.name || foodName == K.Bebidas.Cappuccino.name || foodName == K.Bebidas.Leche.name || foodName == K.Postres.PastelChocolate.name || foodName == K.Postres.PayQueso.name || foodName == K.Postres.PayNuez.name {
+                performSegue(withIdentifier: "MenuToKids", sender: self)
+            } else {
+                performSegue(withIdentifier: "MenuToDrinks", sender: self)
+            }
         case "Kids":
             performSegue(withIdentifier: "MenuToKids", sender: self)
         default:
@@ -137,6 +146,12 @@ extension FoodViewController: UITableViewDelegate {
         
         if segue.identifier == "MenuToBurguer" {
             let destinationVC = segue.destination as! BurgerViewController
+            destinationVC.foodName = foodName
+            destinationVC.foodType = foodType
+        }
+        
+        if segue.identifier == "MenuToSaucers" {
+            let destinationVC = segue.destination as! SaucersViewController
             destinationVC.foodName = foodName
             destinationVC.foodType = foodType
         }
@@ -187,8 +202,8 @@ extension FoodViewController: UITableViewDelegate {
             }
         }
         
-        if segue.identifier == "MenuToOrderThird" {
-            let destinationVC = segue.destination as! BeforeOrderThirdViewController
+        if segue.identifier == "MenuToDrinks" {
+            let destinationVC = segue.destination as! DrinksViewController
             destinationVC.foodName = foodName
             destinationVC.foodType = foodType
         }

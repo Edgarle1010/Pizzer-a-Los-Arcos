@@ -26,6 +26,7 @@ class BreakfastsEggs2ViewController: UIViewController {
     @IBOutlet weak var extraIngredientLabel: UILabel!
     @IBOutlet weak var commentsTextView: UITextView!
     @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var option1Section2Constraint: NSLayoutConstraint!
     
     var bsection1: String?
     var boption1Section1: String?
@@ -93,6 +94,19 @@ class BreakfastsEggs2ViewController: UIViewController {
         option1Section2.setTitle(boption1Section2, for: .normal)
         option2Section2.setTitle(boption2Section2, for: .normal)
         option3Section2.setTitle(boption3Section2, for: .normal)
+        
+        section1Current = boption2Section1
+        section2Current = boption3Section2
+        
+        if foodName == "Huevos con chilaquiles" {
+            option2Section2.removeFromSuperview()
+            
+            let newConstraint = option1Section2Constraint.constraintWithMultiplier(0.50)
+            view.removeConstraint(option1Section2Constraint)
+            view.addConstraint(newConstraint)
+            view.layoutIfNeeded()
+            option1Section2Constraint = newConstraint
+        }
     }
     
     func getTotal() {
@@ -178,7 +192,9 @@ class BreakfastsEggs2ViewController: UIViewController {
         
         //Diselect all size buttons via IBOutlets
         option1Section2.isSelected = false
-        option2Section2.isSelected = false
+        if foodName != "Huevos con chilaquiles" {
+            option2Section2.isSelected = false
+        }
         option3Section2.isSelected = false
         
         //Make the button that triggered the IBAction selected.
@@ -304,3 +320,8 @@ extension BreakfastsEggs2ViewController: UIPickerViewDelegate, UITextFieldDelega
     
 }
 
+extension NSLayoutConstraint {
+    func constraintWithMultiplier(_ multiplier: CGFloat) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: self.firstItem!, attribute: self.firstAttribute, relatedBy: self.relation, toItem: self.secondItem, attribute: self.secondAttribute, multiplier: multiplier, constant: self.constant)
+    }
+}
