@@ -1936,13 +1936,7 @@
             <objects>
                 <tabBarController storyboardIdentifier="MainViewController" automaticallyAdjustsScrollViewInsets="NO" id="iVj-vs-biH" customClass="MenuTabBarViewController" customModule="Pizzería_Los_Arcos_Gómez_Morin" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Menu" id="u5I-58-4rG">
-                        <barButtonItem key="rightBarButtonItem" image="paperplane" catalog="system" id="7It-Iu-MDb">
-                            <connections>
-                                <action selector="sendListButton:" destination="iVj-vs-biH" id="Tbt-h9-WxA"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Menu" id="u5I-58-4rG"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="kUR-6T-Eyx">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1951,8 +1945,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="Ay8-xw-Wfd" kind="relationship" relationship="viewControllers" id="lMV-a4-9Ef"/>
-                        <segue destination="EYv-L6-bY5" kind="relationship" relationship="viewControllers" id="73B-rf-V8C"/>
                         <segue destination="AUD-D9-6V8" kind="relationship" relationship="viewControllers" id="Bq9-7a-uEO"/>
+                        <segue destination="EYv-L6-bY5" kind="showDetail" identifier="RootToShoppingCar" id="zMk-He-B3u"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ith-PM-xIP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1964,16 +1958,16 @@
             <objects>
                 <viewController id="EYv-L6-bY5" customClass="OrdersViewController" customModule="Pizzería_Los_Arcos_Gómez_Morin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tuy-Za-WZL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3lZ-FG-EwB">
-                                <rect key="frame" x="0.0" y="88" width="414" height="665"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="732"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <sections/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="055-pA-hYh">
-                                <rect key="frame" x="0.0" y="753" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="782" width="414" height="60"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MQc-cd-G96">
                                         <rect key="frame" x="324.5" y="0.0" width="69.5" height="60"/>
@@ -2005,16 +1999,50 @@
                                     <constraint firstAttribute="bottom" secondItem="MQc-cd-G96" secondAttribute="bottom" id="w9z-iv-XZE"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBC-dX-kV4">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lista de Pedido" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugg-5S-3xP">
+                                        <rect key="frame" x="146.5" y="13" width="121.5" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BIM-dT-67f">
+                                        <rect key="frame" x="368.5" y="12" width="25.5" height="26"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="paperplane" catalog="system">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sendButtonPressed:" destination="EYv-L6-bY5" eventType="touchUpInside" id="tLG-ne-BDd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="BrandLightBrow"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="BIM-dT-67f" secondAttribute="trailing" constant="20" id="3kE-e8-OUs"/>
+                                    <constraint firstItem="Ugg-5S-3xP" firstAttribute="centerX" secondItem="fBC-dX-kV4" secondAttribute="centerX" id="EIX-xK-gPT"/>
+                                    <constraint firstAttribute="height" constant="50" id="GKM-gT-Hfw"/>
+                                    <constraint firstItem="BIM-dT-67f" firstAttribute="centerY" secondItem="fBC-dX-kV4" secondAttribute="centerY" id="KTi-oR-vUD"/>
+                                    <constraint firstItem="Ugg-5S-3xP" firstAttribute="centerY" secondItem="fBC-dX-kV4" secondAttribute="centerY" id="hmN-q8-LJo"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="3lZ-FG-EwB" firstAttribute="top" secondItem="Ip8-Wz-zRA" secondAttribute="top" id="1j1-xK-NI8"/>
-                            <constraint firstItem="3lZ-FG-EwB" firstAttribute="trailing" secondItem="Ip8-Wz-zRA" secondAttribute="trailing" id="6Tz-FQ-g4m"/>
-                            <constraint firstItem="3lZ-FG-EwB" firstAttribute="leading" secondItem="Ip8-Wz-zRA" secondAttribute="leading" id="Dcd-XN-XqE"/>
+                            <constraint firstItem="055-pA-hYh" firstAttribute="top" secondItem="3lZ-FG-EwB" secondAttribute="bottom" id="0s3-9p-pPd"/>
                             <constraint firstItem="055-pA-hYh" firstAttribute="leading" secondItem="Ip8-Wz-zRA" secondAttribute="leading" id="G1M-ZK-rDu"/>
-                            <constraint firstItem="055-pA-hYh" firstAttribute="top" secondItem="3lZ-FG-EwB" secondAttribute="bottom" id="N4q-G5-nvL"/>
+                            <constraint firstAttribute="trailing" secondItem="fBC-dX-kV4" secondAttribute="trailing" id="OIq-jd-77N"/>
                             <constraint firstItem="055-pA-hYh" firstAttribute="trailing" secondItem="Ip8-Wz-zRA" secondAttribute="trailing" id="YEo-Mj-fmM"/>
-                            <constraint firstItem="055-pA-hYh" firstAttribute="bottom" secondItem="Ip8-Wz-zRA" secondAttribute="bottom" id="bHp-Pd-hsk"/>
+                            <constraint firstItem="3lZ-FG-EwB" firstAttribute="trailing" secondItem="Ip8-Wz-zRA" secondAttribute="trailing" id="al8-YC-LSW"/>
+                            <constraint firstItem="055-pA-hYh" firstAttribute="bottom" secondItem="tuy-Za-WZL" secondAttribute="bottom" id="bHp-Pd-hsk"/>
+                            <constraint firstItem="3lZ-FG-EwB" firstAttribute="top" secondItem="fBC-dX-kV4" secondAttribute="bottom" id="gFX-dl-7Li"/>
+                            <constraint firstItem="fBC-dX-kV4" firstAttribute="leading" secondItem="Ip8-Wz-zRA" secondAttribute="leading" id="lIH-yq-wHH"/>
+                            <constraint firstItem="3lZ-FG-EwB" firstAttribute="leading" secondItem="Ip8-Wz-zRA" secondAttribute="leading" id="mFg-GT-gu9"/>
+                            <constraint firstItem="fBC-dX-kV4" firstAttribute="top" secondItem="Ip8-Wz-zRA" secondAttribute="top" id="n3g-xI-fSu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ip8-Wz-zRA"/>
                     </view>
@@ -2027,7 +2055,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YyS-Vm-eZJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4127.536231884058" y="-686.38392857142856"/>
+            <point key="canvasLocation" x="4124.6376811594209" y="-840.40178571428567"/>
         </scene>
         <!--Número-->
         <scene sceneID="YRe-oN-2Ep">
@@ -3524,7 +3552,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Yog-7T-gZc"/>
-        <segue reference="73B-rf-V8C"/>
+        <segue reference="zMk-He-B3u"/>
         <segue reference="7Yc-NX-ht9"/>
         <segue reference="CeJ-wO-P4N"/>
         <segue reference="Xj6-bp-tjS"/>

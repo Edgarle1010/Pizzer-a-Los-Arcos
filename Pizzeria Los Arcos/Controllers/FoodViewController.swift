@@ -57,12 +57,10 @@ class FoodViewController: UIViewController, ModalTransitionListener {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.title = foodType
-        
         syncBadge()
     }
     
     func popoverDismissed() {
-        self.navigationController?.dismiss(animated: true, completion: nil)
         syncBadge()
     }
     

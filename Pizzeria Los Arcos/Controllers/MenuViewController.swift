@@ -19,9 +19,6 @@ class MenuViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.parent?.navigationItem.title = "Menú"
-        self.parent?.navigationItem.rightBarButtonItem?.isEnabled = false
-        self.parent?.navigationItem.rightBarButtonItem?.tintColor = .clear
-        
     }
     
     @IBAction func imagenPressed(_ sender: UIButton) {

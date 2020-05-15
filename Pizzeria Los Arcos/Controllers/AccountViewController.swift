@@ -31,8 +31,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         self.parent?.navigationItem.title = "Cuenta"
-        self.parent?.navigationItem.rightBarButtonItem?.isEnabled = false
-        self.parent?.navigationItem.rightBarButtonItem?.tintColor = .clear
     }
     
 //    func openMaps() {
