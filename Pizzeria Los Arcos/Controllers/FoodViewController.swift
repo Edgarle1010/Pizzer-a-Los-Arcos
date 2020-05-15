@@ -74,6 +74,13 @@ class FoodViewController: UIViewController, ModalTransitionListener {
         notificationButton.badge = String(OrdersList.ordersList.count)
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: notificationButton)
+        
+        notificationButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        self.view.addSubview(notificationButton)
+    }
+    
+    @objc func buttonAction(sender: UIButton!) {
+        performSegue(withIdentifier: "MenuToShoppingCar", sender: self)
     }
     
 }
@@ -106,6 +113,8 @@ extension FoodViewController: UITableViewDelegate {
         case "Hamburguesas", "Ensaladas", "Platillos", "Mariscos":
             if foodName == K.Platillos.EnchiladasLosArcos.name || foodName == K.Platillos.EnchiladasColorado.name || foodName == K.Platillos.EnchiladasVerde.name {
                 performSegue(withIdentifier: "MenuToSaucers", sender: self)
+            } else if foodName == K.Hamburguesas.PapasFrancesa.name {
+                performSegue(withIdentifier: "MenuToKids", sender: self)
             } else {
                 performSegue(withIdentifier: "MenuToBurguer", sender: self)
             }

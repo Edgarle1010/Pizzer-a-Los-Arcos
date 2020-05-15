@@ -17,5 +17,6 @@ target 'Pizzeria Los Arcos' do
   pod 'FirebaseFirestoreSwift'
   
   pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
+  pod 'BonsaiController'
 
 end

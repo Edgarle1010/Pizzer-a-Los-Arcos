@@ -112,7 +112,6 @@ struct FoodMenu {
                      Desayunos(name: K.Desayunos.OmeletteJamon.name, description: K.Desayunos.OmeletteJamon.description, price: 68),
                      Desayunos(name: K.Desayunos.OmeletteRajas.name, description: K.Desayunos.OmeletteRajas.description, price: 68),
                      Desayunos(name: K.Desayunos.OmeletteChampiñones.name, description: K.Desayunos.OmeletteChampiñones.description, price: 68),
-                     Desayunos(name: K.Desayunos.PlatoFrutas.name, description: K.Desayunos.PlatoFrutas.description, price: 48),
                      Desayunos(name: K.Desayunos.HotCakesMickeyMouse.name, description: K.Desayunos.HotCakesMickeyMouse.description, price: 55),
                      Desayunos(name: K.Desayunos.HotCakesTriple.name, description: K.Desayunos.HotCakesTriple.description, price: 60),
                      Desayunos(name: K.Desayunos.HotCakesMini.name, description: K.Desayunos.HotCakesMini.description, price: 48),
@@ -136,7 +135,7 @@ struct FoodMenu {
                    Bebidas(name: K.Bebidas.Cafe.name, description: K.Bebidas.Cafe.description, price: 18),
                    Bebidas(name: K.Bebidas.Cappuccino.name, description: K.Bebidas.Cappuccino.description, price: 20),
                    Bebidas(name: K.Bebidas.Chocolate.name, description: K.Bebidas.Chocolate.description, price: 18),
-                   Bebidas(name: K.Bebidas.Licuado.name, description: K.Bebidas.Licuado.description, price: 24),
+                   Bebidas(name: K.Bebidas.Licuado.name, description: K.Bebidas.Licuado.description, price: 23),
                    Bebidas(name: K.Bebidas.Leche.name, description: K.Bebidas.Leche.description, price: 12)]
     
     

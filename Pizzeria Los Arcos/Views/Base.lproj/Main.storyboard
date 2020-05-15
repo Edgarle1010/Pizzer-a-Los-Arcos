@@ -359,7 +359,7 @@
             <objects>
                 <viewController id="Ay8-xw-Wfd" customClass="MenuViewController" customModule="Pizzería_Los_Arcos_Gómez_Morin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pfC-rL-nvS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1117"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQH-C2-GRc">
@@ -565,6 +565,7 @@
                         <segue destination="Eub-3C-foz" kind="showDetail" identifier="MenuToBreakfastsEggs" id="21N-o3-Uch"/>
                         <segue destination="qDh-ce-972" kind="showDetail" identifier="MenuToBreakfastsEggs2" id="HAN-u9-Jp3"/>
                         <segue destination="Jki-Vl-8TC" kind="showDetail" identifier="MenuToSaucers" id="acn-us-Gzi"/>
+                        <segue destination="EYv-L6-bY5" kind="showDetail" identifier="MenuToShoppingCar" id="FEg-9k-hQF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="boV-6T-crC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1054,30 +1055,75 @@
                         <outlet property="smallPctButton" destination="v1t-Pw-ZzZ" id="0Ms-fG-jjl"/>
                         <outlet property="totalLabel" destination="OjY-EN-WYe" id="nhM-eC-suU"/>
                         <segue destination="xwY-aL-ycJ" kind="presentation" identifier="PizzasToExtra" id="CeJ-wO-P4N"/>
-                        <segue destination="NhF-Fz-bw7" kind="presentation" identifier="PizzasToHalf" id="7CN-8G-msO"/>
+                        <segue destination="Jgd-sF-B5x" kind="presentation" identifier="PizzasToHalf" id="gdG-qA-42O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w4x-sm-NRF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6303" y="-2149"/>
         </scene>
-        <!--Half Table View Controller-->
-        <scene sceneID="rIQ-9Q-jbU">
+        <!--Half View Controller-->
+        <scene sceneID="qtX-4P-ahb">
             <objects>
-                <tableViewController id="NhF-Fz-bw7" customClass="HalfTableViewController" customModule="Pizzería_Los_Arcos_Gómez_Morin" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qlb-NH-pxR">
+                <viewController id="Jgd-sF-B5x" customClass="HalfViewController" customModule="Pizzería_Los_Arcos_Gómez_Morin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d3g-2c-W0J">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ue-1n-rYQ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selecciona la otra mitad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDq-Oj-0ZT">
+                                        <rect key="frame" x="111" y="13" width="192.5" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D1p-3d-wqp">
+                                        <rect key="frame" x="10" y="8" width="63" height="34"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" title="Cancelar">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="Jgd-sF-B5x" eventType="touchUpInside" id="gzC-EB-dES"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="BrandBrow"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1s3-ah-6yj"/>
+                                    <constraint firstItem="jDq-Oj-0ZT" firstAttribute="centerX" secondItem="8Ue-1n-rYQ" secondAttribute="centerX" id="90H-pW-fCb"/>
+                                    <constraint firstItem="D1p-3d-wqp" firstAttribute="centerY" secondItem="8Ue-1n-rYQ" secondAttribute="centerY" id="9VO-YC-wIU"/>
+                                    <constraint firstItem="D1p-3d-wqp" firstAttribute="leading" secondItem="8Ue-1n-rYQ" secondAttribute="leading" constant="10" id="A1p-0N-20b"/>
+                                    <constraint firstItem="jDq-Oj-0ZT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="D1p-3d-wqp" secondAttribute="trailing" constant="8" symbolic="YES" id="NyP-dg-YIw"/>
+                                    <constraint firstItem="jDq-Oj-0ZT" firstAttribute="centerY" secondItem="8Ue-1n-rYQ" secondAttribute="centerY" id="Ute-Fk-99v"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qDh-OU-8cF">
+                                <rect key="frame" x="0.0" y="50" width="414" height="792"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <connections>
-                            <outlet property="dataSource" destination="NhF-Fz-bw7" id="rkP-32-cnb"/>
-                            <outlet property="delegate" destination="NhF-Fz-bw7" id="mDq-PL-f7i"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Yg-Th-Qrn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="8Ue-1n-rYQ" firstAttribute="top" secondItem="U7j-JQ-EaQ" secondAttribute="top" id="1fz-Yn-Dfv"/>
+                            <constraint firstAttribute="bottom" secondItem="qDh-OU-8cF" secondAttribute="bottom" id="5jS-Ov-VvY"/>
+                            <constraint firstItem="qDh-OU-8cF" firstAttribute="top" secondItem="8Ue-1n-rYQ" secondAttribute="bottom" id="AC4-zF-nqd"/>
+                            <constraint firstItem="8Ue-1n-rYQ" firstAttribute="leading" secondItem="U7j-JQ-EaQ" secondAttribute="leading" id="IIJ-5C-8XF"/>
+                            <constraint firstItem="8Ue-1n-rYQ" firstAttribute="trailing" secondItem="U7j-JQ-EaQ" secondAttribute="trailing" id="IMk-po-Uby"/>
+                            <constraint firstItem="qDh-OU-8cF" firstAttribute="leading" secondItem="U7j-JQ-EaQ" secondAttribute="leading" id="hXz-2l-lDK"/>
+                            <constraint firstItem="U7j-JQ-EaQ" firstAttribute="trailing" secondItem="qDh-OU-8cF" secondAttribute="trailing" id="nDT-m1-jj0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="U7j-JQ-EaQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="qDh-OU-8cF" id="6Qd-42-KQf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RQb-Kl-Q2g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9643" y="413"/>
+            <point key="canvasLocation" x="9641" y="451"/>
         </scene>
         <!--Drinks View Controller-->
         <scene sceneID="68r-M0-YZ2">
@@ -1483,46 +1529,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selecciona el ingredinte extra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imQ-Tg-G4D">
-                                <rect key="frame" x="77" y="20" width="260" height="27"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QpL-hn-r5v">
-                                <rect key="frame" x="0.0" y="57" width="414" height="200"/>
+                                <rect key="frame" x="0.0" y="70" width="414" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="h1C-C9-ZBN"/>
+                                    <constraint firstAttribute="height" constant="200" id="QUL-Hm-ru3"/>
                                 </constraints>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nB-5T-zCF">
-                                <rect key="frame" x="0.0" y="265" width="414" height="60"/>
-                                <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOA-ya-LsN">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingrediente Extra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imQ-Tg-G4D">
+                                        <rect key="frame" x="139" y="13" width="136.5" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhs-16-Gyd">
+                                        <rect key="frame" x="10" y="8" width="63" height="34"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" title="Cancelar">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="xwY-aL-ycJ" eventType="touchUpInside" id="xaP-M2-VgD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYf-4Y-U30">
+                                        <rect key="frame" x="347" y="8" width="57" height="34"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" title="Agregar">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addButtonPressed:" destination="xwY-aL-ycJ" eventType="touchUpInside" id="KFx-r9-ZQn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="BrandBrow"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="1OB-1X-zox"/>
+                                    <constraint firstAttribute="trailing" secondItem="wYf-4Y-U30" secondAttribute="trailing" constant="10" id="A2E-Aj-QBK"/>
+                                    <constraint firstItem="xhs-16-Gyd" firstAttribute="leading" secondItem="YOA-ya-LsN" secondAttribute="leading" constant="10" id="DQY-Fv-7s8"/>
+                                    <constraint firstAttribute="height" constant="50" id="Tp2-NI-f5h"/>
+                                    <constraint firstItem="imQ-Tg-G4D" firstAttribute="centerY" secondItem="YOA-ya-LsN" secondAttribute="centerY" id="iST-UV-ZSQ"/>
+                                    <constraint firstItem="wYf-4Y-U30" firstAttribute="centerY" secondItem="YOA-ya-LsN" secondAttribute="centerY" id="jUX-Cb-YXB"/>
+                                    <constraint firstItem="wYf-4Y-U30" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="imQ-Tg-G4D" secondAttribute="trailing" constant="8" symbolic="YES" id="mZh-FL-8Vj"/>
+                                    <constraint firstItem="xhs-16-Gyd" firstAttribute="centerY" secondItem="YOA-ya-LsN" secondAttribute="centerY" id="ny5-aO-57G"/>
+                                    <constraint firstItem="imQ-Tg-G4D" firstAttribute="centerX" secondItem="YOA-ya-LsN" secondAttribute="centerX" id="pyH-ye-ysd"/>
+                                    <constraint firstItem="imQ-Tg-G4D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xhs-16-Gyd" secondAttribute="trailing" constant="8" symbolic="YES" id="tAD-5u-u0l"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                <state key="normal" title="Agregar">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="addButtonPressed:" destination="xwY-aL-ycJ" eventType="touchUpInside" id="See-9X-2p3"/>
-                                    <action selector="addPressed:" destination="KNg-Hh-m0V" eventType="touchUpInside" id="49f-UB-6sj"/>
-                                    <action selector="registerButtonPressed:" destination="DuV-DV-EwM" eventType="touchUpInside" id="hkf-z8-zRL"/>
-                                    <action selector="verificationCodePressed:" destination="n0i-5a-vpk" eventType="touchUpInside" id="xCt-jx-RjH"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.90196078431372551" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="QpL-hn-r5v" firstAttribute="top" secondItem="imQ-Tg-G4D" secondAttribute="bottom" constant="10" id="5VZ-yg-v0A"/>
-                            <constraint firstItem="imQ-Tg-G4D" firstAttribute="centerX" secondItem="jkM-K9-bTG" secondAttribute="centerX" id="65A-50-LdE"/>
-                            <constraint firstItem="6nB-5T-zCF" firstAttribute="leading" secondItem="6KT-at-hPq" secondAttribute="leading" id="ALQ-i8-CGu"/>
-                            <constraint firstItem="6nB-5T-zCF" firstAttribute="top" secondItem="QpL-hn-r5v" secondAttribute="bottom" constant="8" symbolic="YES" id="cfU-GX-wxG"/>
-                            <constraint firstItem="QpL-hn-r5v" firstAttribute="leading" secondItem="6KT-at-hPq" secondAttribute="leading" id="gG9-WD-0GB"/>
-                            <constraint firstAttribute="trailing" secondItem="6nB-5T-zCF" secondAttribute="trailing" id="iJX-VM-sHX"/>
-                            <constraint firstItem="QpL-hn-r5v" firstAttribute="trailing" secondItem="6KT-at-hPq" secondAttribute="trailing" id="jsV-dc-Kdb"/>
-                            <constraint firstItem="imQ-Tg-G4D" firstAttribute="top" secondItem="6KT-at-hPq" secondAttribute="top" constant="20" id="sah-rj-ky9"/>
+                            <constraint firstItem="YOA-ya-LsN" firstAttribute="top" secondItem="6KT-at-hPq" secondAttribute="top" id="0UO-ed-OFH"/>
+                            <constraint firstItem="YOA-ya-LsN" firstAttribute="leading" secondItem="6KT-at-hPq" secondAttribute="leading" id="5Px-Ei-g9V"/>
+                            <constraint firstItem="QpL-hn-r5v" firstAttribute="top" secondItem="YOA-ya-LsN" secondAttribute="bottom" constant="20" id="LGV-Sk-xOK"/>
+                            <constraint firstItem="QpL-hn-r5v" firstAttribute="trailing" secondItem="6KT-at-hPq" secondAttribute="trailing" id="kis-86-FHu"/>
+                            <constraint firstItem="QpL-hn-r5v" firstAttribute="leading" secondItem="6KT-at-hPq" secondAttribute="leading" id="rdS-o5-XbM"/>
+                            <constraint firstItem="YOA-ya-LsN" firstAttribute="trailing" secondItem="6KT-at-hPq" secondAttribute="trailing" id="vPG-gJ-tA4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6KT-at-hPq"/>
                     </view>
@@ -1533,14 +1597,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PFn-DH-YmC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9643" y="-293"/>
+            <point key="canvasLocation" x="9640.579710144928" y="-294.64285714285711"/>
         </scene>
         <!--Más-->
         <scene sceneID="dox-5F-tk4">
             <objects>
                 <viewController id="AUD-D9-6V8" customClass="AccountViewController" customModule="Pizzería_Los_Arcos_Gómez_Morin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5tc-Ca-MIm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fy4-Er-uwS">
@@ -1879,7 +1943,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kUR-6T-Eyx">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="kUR-6T-Eyx">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.94901960784313721" green="0.90196078431372551" blue="0.75294117647058822" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1900,7 +1964,7 @@
             <objects>
                 <viewController id="EYv-L6-bY5" customClass="OrdersViewController" customModule="Pizzería_Los_Arcos_Gómez_Morin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tuy-Za-WZL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3lZ-FG-EwB">
@@ -3074,6 +3138,7 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyB-ST-Le6">
                                                         <rect key="frame" x="124.5" y="0.0" width="124.5" height="36"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="option2Section2"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                         <color key="tintColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="option2Section2">
@@ -3459,8 +3524,9 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Yog-7T-gZc"/>
+        <segue reference="73B-rf-V8C"/>
         <segue reference="7Yc-NX-ht9"/>
-        <segue reference="DBl-bB-iBU"/>
+        <segue reference="CeJ-wO-P4N"/>
         <segue reference="Xj6-bp-tjS"/>
     </inferredMetricsTieBreakers>
     <resources>

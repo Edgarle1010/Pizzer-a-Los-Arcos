@@ -234,7 +234,7 @@
 "iL0-TH-f1M.placeholder" = "Codigo de seguridad";
 
 /* Class = "UILabel"; text = "Selecciona el ingredinte extra"; ObjectID = "imQ-Tg-G4D"; */
-"imQ-Tg-G4D.text" = "Selecciona el ingredinte extra";
+"imQ-Tg-G4D.text" = "Ingredinte extra";
 
 /* Class = "UINavigationItem"; title = "Registro"; ObjectID = "kEL-2z-EHp"; */
 "kEL-2z-EHp.title" = "Registro";

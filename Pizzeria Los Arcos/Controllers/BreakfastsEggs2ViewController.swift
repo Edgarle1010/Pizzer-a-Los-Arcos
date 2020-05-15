@@ -8,6 +8,7 @@
 
 import UIKit
 import AudioToolbox
+import BonsaiController
 
 class BreakfastsEggs2ViewController: UIViewController {
     
@@ -132,8 +133,10 @@ class BreakfastsEggs2ViewController: UIViewController {
         option2Section1.setTitleColor(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1), for: .normal)
         option1Section2.isEnabled = false
         option1Section2.setTitleColor(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1), for: .normal)
-        option2Section2.isEnabled = false
-        option2Section2.setTitleColor(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1), for: .normal)
+        if foodName != "Huevos con chilaquiles" {
+            option2Section2.isEnabled = false
+            option2Section2.setTitleColor(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1), for: .normal)
+        }
         option3Section2.isEnabled = false
         option3Section2.setTitleColor(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1), for: .normal)
         quantityTextField.isEnabled = false
@@ -152,8 +155,10 @@ class BreakfastsEggs2ViewController: UIViewController {
         option2Section1.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         option1Section2.isEnabled = true
         option1Section2.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        option2Section2.isEnabled = true
-        option2Section2.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        if foodName != "Huevos con chilaquiles" {
+            option2Section2.isEnabled = true
+            option2Section2.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        }
         option3Section2.isEnabled = true
         option3Section2.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         quantityTextField.isEnabled = true
@@ -210,7 +215,7 @@ class BreakfastsEggs2ViewController: UIViewController {
             oldValue += 1
             //Your Code You Wanted To Perform On Increment
             performSegue(withIdentifier: "BreakfastsEggs2ToExtra", sender: self)
-        } else {
+        } else if (sender.value<oldValue) {
             oldValue=oldValue-1
             //Your Code You Wanted To Perform On Decrement
             var lastExtraIngredient: String?
@@ -280,6 +285,9 @@ class BreakfastsEggs2ViewController: UIViewController {
             destinationVC.sizeCurrent = sizeCurrent
             destinationVC.quantity = quantitySplit
             destinationVC.foodType = foodType
+            
+            segue.destination.transitioningDelegate = self
+            segue.destination.modalPresentationStyle = .custom
         }
     }
     
@@ -325,3 +333,43 @@ extension NSLayoutConstraint {
         return NSLayoutConstraint(item: self.firstItem!, attribute: self.firstAttribute, relatedBy: self.relation, toItem: self.secondItem, attribute: self.secondAttribute, multiplier: multiplier, constant: self.constant)
     }
 }
+
+
+//MARK: - Bonsai Framework
+extension BreakfastsEggs2ViewController: BonsaiControllerDelegate {
+    
+    // return the frame of your Bonsai View Controller
+    func frameOfPresentedView(in containerViewFrame: CGRect) -> CGRect {
+        
+        return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 2), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / 2))
+    }
+    
+    // return a Bonsai Controller with SlideIn or Bubble transition animator
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+    
+        /// With Background Color ///
+    
+        // Slide animation from .left, .right, .top, .bottom
+        let bonsaiController = BonsaiController(fromDirection: .bottom, backgroundColor: UIColor(white: 0, alpha: 0.5), presentedViewController: presented, delegate: self)
+        
+        bonsaiController.isDisabledTapOutside = true
+        
+        return bonsaiController
+        
+        
+        // or Bubble animation initiated from a view
+        //return BonsaiController(fromView: yourOriginView, backgroundColor: UIColor(white: 0, alpha: 0.5), presentedViewController: presented, delegate: self)
+    
+    
+        /// With Blur Style ///
+        
+        // Slide animation from .left, .right, .top, .bottom
+        //return BonsaiController(fromDirection: .bottom, blurEffectStyle: .light, presentedViewController: presented, delegate: self)
+        
+        // or Bubble animation initiated from a view
+        //return BonsaiController(fromView: yourOriginView, blurEffectStyle: .dark,  presentedViewController: presented, delegate: self)
+    }
+}
+
+
+

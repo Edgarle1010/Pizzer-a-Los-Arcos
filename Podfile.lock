@@ -158,6 +158,7 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
+  - BonsaiController (6.0.0)
   - BoringSSL-GRPC (0.0.3):
     - BoringSSL-GRPC/Implementation (= 0.0.3)
     - BoringSSL-GRPC/Interface (= 0.0.3)
@@ -300,6 +301,7 @@ PODS:
   - SVProgressHUD/Core (2.2.6)
 
 DEPENDENCIES:
+  - BonsaiController
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Core
@@ -311,6 +313,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - abseil
+    - BonsaiController
     - BoringSSL-GRPC
     - Firebase
     - FirebaseAnalytics
@@ -348,6 +351,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
+  BonsaiController: 63410fc39bc5b3a9df5b329dbc848b6b27edf663
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
   Firebase: 497158b816d0a86fc31babbd05546fcd7e6083ff
   FirebaseAnalytics: cf95d3aab897612783020fbd98401d5366f135ee
@@ -375,6 +379,6 @@ SPEC CHECKSUMS:
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
   SVProgressHUD: de812b4f0e1d65358f0064416473174ae619843f
 
-PODFILE CHECKSUM: 6c183b7119fcc2262282a4c16a847ac84ae959e5
+PODFILE CHECKSUM: 92ea42c4c5877e1bf0a810d7b5bf3b9608467d48
 
 COCOAPODS: 1.8.4

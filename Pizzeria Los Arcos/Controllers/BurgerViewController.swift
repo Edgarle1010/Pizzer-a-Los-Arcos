@@ -8,6 +8,7 @@
 
 import UIKit
 import AudioToolbox
+import BonsaiController
 
 class BurgerViewController: UIViewController {
     
@@ -73,8 +74,7 @@ class BurgerViewController: UIViewController {
             oldValue += 1
             //Your Code You Wanted To Perform On Increment
             performSegue(withIdentifier: "BurguerToExtra", sender: self)
-        }
-        else {
+        } else if (sender.value<oldValue) {
             oldValue=oldValue-1
             //Your Code You Wanted To Perform On Decrement
             for data in extraIngredients {
@@ -152,9 +152,12 @@ class BurgerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "BurguerToExtra" {
             let destinationVC = segue.destination as! ExtraIngredientViewController
-            destinationVC.isModalInPresentation = true
             destinationVC.quantity = Int(quantitySplit)
             destinationVC.foodType = foodType
+            destinationVC.foodName = foodName
+            
+            segue.destination.transitioningDelegate = self
+            segue.destination.modalPresentationStyle = .custom
         }
     }
 }
@@ -192,3 +195,41 @@ extension BurgerViewController: UIPickerViewDelegate, UITextFieldDelegate {
     }
     
 }
+
+
+//MARK: - Bonsai Framework
+extension BurgerViewController: BonsaiControllerDelegate {
+    
+    // return the frame of your Bonsai View Controller
+    func frameOfPresentedView(in containerViewFrame: CGRect) -> CGRect {
+        
+        return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 2), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / 2))
+    }
+    
+    // return a Bonsai Controller with SlideIn or Bubble transition animator
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+    
+        /// With Background Color ///
+    
+        // Slide animation from .left, .right, .top, .bottom
+        let bonsaiController = BonsaiController(fromDirection: .bottom, backgroundColor: UIColor(white: 0, alpha: 0.5), presentedViewController: presented, delegate: self)
+        
+        bonsaiController.isDisabledTapOutside = true
+        
+        return bonsaiController
+        
+        
+        // or Bubble animation initiated from a view
+        //return BonsaiController(fromView: yourOriginView, backgroundColor: UIColor(white: 0, alpha: 0.5), presentedViewController: presented, delegate: self)
+    
+    
+        /// With Blur Style ///
+        
+        // Slide animation from .left, .right, .top, .bottom
+        //return BonsaiController(fromDirection: .bottom, blurEffectStyle: .light, presentedViewController: presented, delegate: self)
+        
+        // or Bubble animation initiated from a view
+        //return BonsaiController(fromView: yourOriginView, blurEffectStyle: .dark,  presentedViewController: presented, delegate: self)
+    }
+}
+

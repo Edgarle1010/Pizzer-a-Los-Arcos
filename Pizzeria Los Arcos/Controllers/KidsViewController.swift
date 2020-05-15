@@ -64,6 +64,8 @@ class KidsViewController: UIViewController {
             currentPrice = Double(food.bebidas.filter{$0.name == foodName}[0].price) * Double(quantitySplit)
         case "Postres":
             currentPrice = Double(food.postres.filter{$0.name == foodName}[0].price) * Double(quantitySplit)
+        case "Hamburguesas":
+            currentPrice = Double(food.hamburguesas.filter{$0.name == foodName}[0].price) * Double(quantitySplit)
         default:
             currentPrice = Double(food.kids.filter{$0.name == foodName}[0].price) * Double(quantitySplit)
         }

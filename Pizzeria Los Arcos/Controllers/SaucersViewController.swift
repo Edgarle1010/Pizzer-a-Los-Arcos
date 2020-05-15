@@ -8,6 +8,7 @@
 
 import UIKit
 import AudioToolbox
+import BonsaiController
 
 class SaucersViewController: UIViewController {
 
@@ -96,7 +97,7 @@ class SaucersViewController: UIViewController {
             oldValue += 1
             //Your Code You Wanted To Perform On Increment
             performSegue(withIdentifier: "SaucersToExtra", sender: self)
-        } else {
+        } else if (sender.value<oldValue) {
             oldValue=oldValue-1
             //Your Code You Wanted To Perform On Decrement
             var lastExtraIngredient: String?
@@ -123,14 +124,22 @@ class SaucersViewController: UIViewController {
         
         if (sender.value != 0) {
             hastButton.isEnabled = false
+            hastButton.setTitleColor(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1), for: .normal)
             chickenButton.isEnabled = false
+            chickenButton.setTitleColor(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1), for: .normal)
             cheeseButton.isEnabled = false
+            cheeseButton.setTitleColor(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1), for: .normal)
             quantityTextField.isEnabled = false
+            quantityTextField.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         } else {
             hastButton.isEnabled = true
+            hastButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
             chickenButton.isEnabled = true
+            chickenButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
             cheeseButton.isEnabled = true
+            cheeseButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
             quantityTextField.isEnabled = true
+            quantityTextField.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
     }
     
@@ -167,10 +176,13 @@ class SaucersViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SaucersToExtra" {
             let destinationVC = segue.destination as! ExtraIngredientViewController
-            destinationVC.isModalInPresentation = true
             destinationVC.sizeCurrent = ingredientCurrent
             destinationVC.quantity = quantitySplit
             destinationVC.foodType = foodType
+            destinationVC.foodName = foodName
+            
+            segue.destination.transitioningDelegate = self
+            segue.destination.modalPresentationStyle = .custom
         }
     }
     
@@ -210,4 +222,42 @@ extension SaucersViewController: UIPickerViewDelegate, UITextFieldDelegate {
     }
     
 }
+
+
+//MARK: - Bonsai Framework
+extension SaucersViewController: BonsaiControllerDelegate {
+    
+    // return the frame of your Bonsai View Controller
+    func frameOfPresentedView(in containerViewFrame: CGRect) -> CGRect {
+        
+        return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 2), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / 2))
+    }
+    
+    // return a Bonsai Controller with SlideIn or Bubble transition animator
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+    
+        /// With Background Color ///
+    
+        // Slide animation from .left, .right, .top, .bottom
+        let bonsaiController = BonsaiController(fromDirection: .bottom, backgroundColor: UIColor(white: 0, alpha: 0.5), presentedViewController: presented, delegate: self)
+        
+        bonsaiController.isDisabledTapOutside = true
+        
+        return bonsaiController
+        
+        
+        // or Bubble animation initiated from a view
+        //return BonsaiController(fromView: yourOriginView, backgroundColor: UIColor(white: 0, alpha: 0.5), presentedViewController: presented, delegate: self)
+    
+    
+        /// With Blur Style ///
+        
+        // Slide animation from .left, .right, .top, .bottom
+        //return BonsaiController(fromDirection: .bottom, blurEffectStyle: .light, presentedViewController: presented, delegate: self)
+        
+        // or Bubble animation initiated from a view
+        //return BonsaiController(fromView: yourOriginView, blurEffectStyle: .dark,  presentedViewController: presented, delegate: self)
+    }
+}
+
 

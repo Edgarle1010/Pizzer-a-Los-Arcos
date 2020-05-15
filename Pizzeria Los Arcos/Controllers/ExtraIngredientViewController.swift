@@ -13,6 +13,7 @@ class ExtraIngredientViewController: UIViewController {
     @IBOutlet weak var pickerView: UIPickerView!
     
     var foodType: String?
+    var foodName: String?
     var extraOpt: [Extra] = []
     var back: UIViewController?
     
@@ -30,13 +31,33 @@ class ExtraIngredientViewController: UIViewController {
         case "Pizzas":
             extraOpt = extraList.pizza.filter { $0.size == sizeCurrent }
         case "Desayunos":
-            extraOpt = extraList.desayunos
+             extraOpt = extraList.desayunos
         case "Hamburguesas":
-            extraOpt = extraList.hamburguesas
+            if foodName == K.Hamburguesas.Hotdog.name {
+                extraOpt = extraList.hotdog
+            } else {
+                extraOpt = extraList.hamburguesas
+            }
         case "Platillos":
-            extraOpt = extraList.platillos
+            if foodName == K.Platillos.Espagueti.name {
+                extraOpt = extraList.espagueti
+            } else if foodName == K.Platillos.SopaTortilla.name {
+                extraOpt = extraList.sopaTortilla
+            } else if foodName == K.Platillos.EnchiladasLosArcos.name || foodName == K.Platillos.EnchiladasVerde.name || foodName == K.Platillos.EnchiladasColorado.name || foodName == K.Platillos.Flautas.name || foodName == K.Platillos.TacosPicadillo.name {
+                extraOpt = extraList.enchiladas
+            } else {
+                extraOpt = extraList.platillos
+            }
         case "Mariscos":
-            extraOpt = extraList.mariscos
+            if let name = foodName {
+                if name.contains("Filete") {
+                    extraOpt = extraList.filetes
+                } else if foodName == K.Mariscos.CamaronesRancheros.name {
+                    extraOpt = extraList.camaronRanchero
+                } else {
+                    extraOpt = extraList.mariscos
+                }
+            }
         case "Ensaladas":
             extraOpt = extraList.ensaladas
         default:
@@ -52,13 +73,90 @@ class ExtraIngredientViewController: UIViewController {
         
     }
     
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        
+        switch foodType {
+        case "Pizzas":
+            if let backVC = presentingViewController as? PizzasViewController {
+                let value = backVC.extraIngredientStepper.value - 1
+                backVC.extraIngredientStepper.value = value
+                backVC.oldValue = value
+                backVC.extraIngredientStepper.sendActions(for: .valueChanged)
+                dismiss(animated: true, completion: nil)
+            }
+        case "Hamburguesas":
+            if let backVC = presentingViewController as? BurgerViewController {
+                let value = backVC.extraIngredientStepper.value - 1
+                backVC.extraIngredientStepper.value = value
+                backVC.oldValue = value
+                backVC.extraIngredientStepper.sendActions(for: .valueChanged)
+                dismiss(animated: true, completion: nil)
+            }
+        case "Platillos":
+            if let backVC = presentingViewController as? BurgerViewController {
+                let value = backVC.extraIngredientStepper.value - 1
+                backVC.extraIngredientStepper.value = value
+                backVC.oldValue = value
+                backVC.extraIngredientStepper.sendActions(for: .valueChanged)
+                dismiss(animated: true, completion: nil)
+            }
+            if let backVC = presentingViewController as? SaucersViewController {
+                let value = backVC.extraIngredientStepper.value - 1
+                backVC.extraIngredientStepper.value = value
+                backVC.oldValue = value
+                backVC.extraIngredientStepper.sendActions(for: .valueChanged)
+                dismiss(animated: true, completion: nil)
+            }
+        case "Mariscos":
+            if let backVC = presentingViewController as? BurgerViewController {
+                let value = backVC.extraIngredientStepper.value - 1
+                backVC.extraIngredientStepper.value = value
+                backVC.oldValue = value
+                backVC.extraIngredientStepper.sendActions(for: .valueChanged)
+                dismiss(animated: true, completion: nil)
+            }
+        case "Desayunos":
+            if let backVC = presentingViewController as? BreakfastsViewController {
+                let value = backVC.extraIngredientStepper.value - 1
+                backVC.extraIngredientStepper.value = value
+                backVC.oldValue = value
+                backVC.extraIngredientStepper.sendActions(for: .valueChanged)
+                dismiss(animated: true, completion: nil)
+            }
+            if let backVC = presentingViewController as? BreakfastsEggsViewController {
+                let value = backVC.extraIngredientStepper.value - 1
+                backVC.extraIngredientStepper.value = value
+                backVC.oldValue = value
+                backVC.extraIngredientStepper.sendActions(for: .valueChanged)
+                dismiss(animated: true, completion: nil)
+            }
+            if let backVC = presentingViewController as? BreakfastsEggs2ViewController {
+                let value = backVC.extraIngredientStepper.value - 1
+                backVC.extraIngredientStepper.value = value
+                backVC.oldValue = value
+                backVC.extraIngredientStepper.sendActions(for: .valueChanged)
+                dismiss(animated: true, completion: nil)
+            }
+        case "Ensaladas":
+        if let backVC = presentingViewController as? BurgerViewController {
+            let value = backVC.extraIngredientStepper.value - 1
+            backVC.extraIngredientStepper.value = value
+            backVC.oldValue = value
+            backVC.extraIngredientStepper.sendActions(for: .valueChanged)
+            dismiss(animated: true, completion: nil)
+        }
+        default: break
+        }
+        
+    }
+    
     @IBAction func addButtonPressed(_ sender: UIButton) {
         
         guard let quantity = quantity else { fatalError() }
         
-        if foodType == "Pizzas" {
+        switch foodType {
+        case "Pizzas":
             if let backVC = presentingViewController as? PizzasViewController {
-                
                 if backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] != nil {
                     let showMessagePrompt = UIAlertController(title: "¡Ha ocurrido un problema!", message: "El ingrediente extra seleccionado ya esta agregado, por favor selecciona otro.", preferredStyle: .alert)
                     showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defalut action"), style: .default, handler: { (_) in
@@ -78,12 +176,118 @@ class ExtraIngredientViewController: UIViewController {
                     
                     dismiss(animated: true, completion: nil)
                 }
-                
             }
-            
-        } else if foodType == "Desayunos" {
+        case "Hamburguesas":
+            if let backVC = presentingViewController as? BurgerViewController {
+                if backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] != nil {
+                    let showMessagePrompt = UIAlertController(title: "¡Ha ocurrido un problema!", message: "El ingrediente extra seleccionado ya esta agregado, por favor selecciona otro.", preferredStyle: .alert)
+                    showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defalut action"), style: .default, handler: { (_) in
+                    }))
+                    self.present(showMessagePrompt, animated: true, completion: nil)
+                    return
+                } else {
+                    backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] = priceExtra
+                    backVC.extraIngredientLabel.text = ""
+                    priceExtra = 0
+                    for data in backVC.extraIngredients {
+                        backVC.extraIngredientLabel.text?.append("\(data.key)")
+                        priceExtra += data.value
+                    }
+                    backVC.extraPrice = Int(Double(priceExtra) * Double(quantity))
+                    backVC.viewDidLoad()
+                    
+                    dismiss(animated: true, completion: nil)
+                }
+            }
+        case "Ensaladas":
+            if let backVC = presentingViewController as? BurgerViewController {
+                if backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] != nil {
+                    let showMessagePrompt = UIAlertController(title: "¡Ha ocurrido un problema!", message: "El ingrediente extra seleccionado ya esta agregado, por favor selecciona otro.", preferredStyle: .alert)
+                    showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defalut action"), style: .default, handler: { (_) in
+                    }))
+                    self.present(showMessagePrompt, animated: true, completion: nil)
+                    return
+                } else {
+                    backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] = priceExtra
+                    backVC.extraIngredientLabel.text = ""
+                    priceExtra = 0
+                    for data in backVC.extraIngredients {
+                        backVC.extraIngredientLabel.text?.append("\(data.key)")
+                        priceExtra += data.value
+                    }
+                    backVC.extraPrice = Int(Double(priceExtra) * Double(quantity))
+                    backVC.viewDidLoad()
+                    
+                    dismiss(animated: true, completion: nil)
+                }
+            }
+        case "Platillos":
+            if let backVC = presentingViewController as? SaucersViewController {
+                if backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] != nil {
+                    let showMessagePrompt = UIAlertController(title: "¡Ha ocurrido un problema!", message: "El ingrediente extra seleccionado ya esta agregado, por favor selecciona otro.", preferredStyle: .alert)
+                    showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defalut action"), style: .default, handler: { (_) in
+                    }))
+                    self.present(showMessagePrompt, animated: true, completion: nil)
+                    return
+                } else {
+                    backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] = priceExtra
+                    backVC.extraIngredientLabel.text = ""
+                    priceExtra = 0
+                    for data in backVC.extraIngredients {
+                        backVC.extraIngredientLabel.text?.append("\(data.key)")
+                        priceExtra += data.value
+                    }
+                    backVC.extraPrice = Double(priceExtra) * Double(quantity)
+                    backVC.viewDidLoad()
+                    
+                    dismiss(animated: true, completion: nil)
+                }
+            }
+            if let backVC = presentingViewController as? BurgerViewController {
+                if backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] != nil {
+                    let showMessagePrompt = UIAlertController(title: "¡Ha ocurrido un problema!", message: "El ingrediente extra seleccionado ya esta agregado, por favor selecciona otro.", preferredStyle: .alert)
+                    showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defalut action"), style: .default, handler: { (_) in
+                    }))
+                    self.present(showMessagePrompt, animated: true, completion: nil)
+                    return
+                } else {
+                    backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] = priceExtra
+                    backVC.extraIngredientLabel.text = ""
+                    priceExtra = 0
+                    for data in backVC.extraIngredients {
+                        backVC.extraIngredientLabel.text?.append("\(data.key)")
+                        priceExtra += data.value
+                    }
+                    backVC.extraPrice = Int(Double(priceExtra) * Double(quantity))
+                    backVC.viewDidLoad()
+                    
+                    dismiss(animated: true, completion: nil)
+                }
+            }
+        case "Mariscos":
+            if let backVC = presentingViewController as? BurgerViewController {
+                if backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] != nil {
+                    let showMessagePrompt = UIAlertController(title: "¡Ha ocurrido un problema!", message: "El ingrediente extra seleccionado ya esta agregado, por favor selecciona otro.", preferredStyle: .alert)
+                    showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defalut action"), style: .default, handler: { (_) in
+                    }))
+                    self.present(showMessagePrompt, animated: true, completion: nil)
+                    return
+                } else {
+                    backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] = priceExtra
+                    backVC.extraIngredientLabel.text = ""
+                    priceExtra = 0
+                    for data in backVC.extraIngredients {
+                        backVC.extraIngredientLabel.text?.append("\(data.key)")
+                        priceExtra += data.value
+                    }
+                    backVC.extraPrice = Int(Double(priceExtra) * Double(quantity))
+                    backVC.viewDidLoad()
+                    
+                    dismiss(animated: true, completion: nil)
+                }
+            }
+        case "Desayunos":
             if let backVC = presentingViewController as? BreakfastsViewController {
-                
                 if backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] != nil {
                     let showMessagePrompt = UIAlertController(title: "¡Ha ocurrido un problema!", message: "El ingrediente extra seleccionado ya esta agregado, por favor selecciona otro.", preferredStyle: .alert)
                     showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defalut action"), style: .default, handler: { (_) in
@@ -104,9 +308,7 @@ class ExtraIngredientViewController: UIViewController {
                     dismiss(animated: true, completion: nil)
                 }
             }
-            
             if let backVC = presentingViewController as? BreakfastsEggsViewController {
-                
                 if backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] != nil {
                     let showMessagePrompt = UIAlertController(title: "¡Ha ocurrido un problema!", message: "El ingrediente extra seleccionado ya esta agregado, por favor selecciona otro.", preferredStyle: .alert)
                     showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defalut action"), style: .default, handler: { (_) in
@@ -127,7 +329,6 @@ class ExtraIngredientViewController: UIViewController {
                     dismiss(animated: true, completion: nil)
                 }
             }
-            
             if let backVC = presentingViewController as? BreakfastsEggs2ViewController {
                 
                 if backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] != nil {
@@ -145,91 +346,14 @@ class ExtraIngredientViewController: UIViewController {
                         priceExtra += data.value
                     }
                     backVC.extraPrice = Double(priceExtra) * Double(quantity)
-                    backVC.viewDidLoad()
+                    backVC.getTotal()
                     
                     dismiss(animated: true, completion: nil)
                 }
             }
-            
-        } else if foodType == "Hamburguesas" {
-            
-            if let backVC = presentingViewController as? BurgerViewController {
-                
-                if backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] != nil {
-                    let showMessagePrompt = UIAlertController(title: "¡Ha ocurrido un problema!", message: "El ingrediente extra seleccionado ya esta agregado, por favor selecciona otro.", preferredStyle: .alert)
-                    showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defalut action"), style: .default, handler: { (_) in
-                    }))
-                    self.present(showMessagePrompt, animated: true, completion: nil)
-                    return
-                } else {
-                    backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] = priceExtra
-                    backVC.extraIngredientLabel.text = ""
-                    priceExtra = 0
-                    for data in backVC.extraIngredients {
-                        backVC.extraIngredientLabel.text?.append("\(data.key)")
-                        priceExtra += data.value
-                    }
-                    backVC.extraPrice = Int(Double(priceExtra) * Double(quantity))
-                    backVC.viewDidLoad()
-                    
-                    dismiss(animated: true, completion: nil)
-                }
-            }
-            
-        } else if foodType == "Platillos" {
-            
-            if let backVC = presentingViewController as? SaucersViewController {
-                
-                if backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] != nil {
-                    let showMessagePrompt = UIAlertController(title: "¡Ha ocurrido un problema!", message: "El ingrediente extra seleccionado ya esta agregado, por favor selecciona otro.", preferredStyle: .alert)
-                    showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defalut action"), style: .default, handler: { (_) in
-                    }))
-                    self.present(showMessagePrompt, animated: true, completion: nil)
-                    return
-                } else {
-                    backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] = priceExtra
-                    backVC.extraIngredientLabel.text = ""
-                    priceExtra = 0
-                    for data in backVC.extraIngredients {
-                        backVC.extraIngredientLabel.text?.append("\(data.key)")
-                        priceExtra += data.value
-                    }
-                    backVC.extraPrice = Double(priceExtra) * Double(quantity)
-                    backVC.viewDidLoad()
-                    
-                    dismiss(animated: true, completion: nil)
-                }
-                
-            }
-            
-            if let backVC = presentingViewController as? BurgerViewController {
-                
-                if backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] != nil {
-                    let showMessagePrompt = UIAlertController(title: "¡Ha ocurrido un problema!", message: "El ingrediente extra seleccionado ya esta agregado, por favor selecciona otro.", preferredStyle: .alert)
-                    showMessagePrompt.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Defalut action"), style: .default, handler: { (_) in
-                    }))
-                    self.present(showMessagePrompt, animated: true, completion: nil)
-                    return
-                } else {
-                    backVC.extraIngredients["(Cantidad: \(quantity)) \(nameExtra) ($\(priceExtra))\n"] = priceExtra
-                    backVC.extraIngredientLabel.text = ""
-                    priceExtra = 0
-                    for data in backVC.extraIngredients {
-                        backVC.extraIngredientLabel.text?.append("\(data.key)")
-                        priceExtra += data.value
-                    }
-                    backVC.extraPrice = Int(Double(priceExtra) * Double(quantity))
-                    backVC.viewDidLoad()
-                    
-                    dismiss(animated: true, completion: nil)
-                }
-                
-            }
-            
+        default: break
         }
-        
     }
-    
 }
 
 extension ExtraIngredientViewController: UIPickerViewDataSource {

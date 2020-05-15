@@ -72,20 +72,33 @@ struct ExtraIngredientMenu {
                      ExtraDesayunos(name: K.ExtraM.FajitasRes.name, price: 40),
                      ExtraDesayunos(name: K.ExtraM.HotCake.name, price: 20),
                      ExtraDesayunos(name: K.ExtraM.ChilaquilesRojos.name, price: 10),
-                     ExtraDesayunos(name: K.ExtraM.ChilaquilesVerdes.name, price: 10)]
+                     ExtraDesayunos(name: K.ExtraM.ChilaquilesVerdes.name, price: 10),
+                     ExtraDesayunos(name: K.ExtraM.Tocino.name, price: 8)]
+    
+    
+    //MARK: - Hamburguesas
     
     let hamburguesas = [ExtraHamburguesa(name: K.ExtraM.Pina.name, price: 8),
                         ExtraHamburguesa(name: K.ExtraM.Jamon.name, price: 5),
                         ExtraHamburguesa(name: K.ExtraM.TocinoOthers.name, price: 15),
                         ExtraHamburguesa(name: K.ExtraM.CarneRes.name, price: 10),
                         ExtraHamburguesa(name: K.ExtraM.Queso.name, price: 5),
-                        ExtraHamburguesa(name: K.ExtraM.CarnePollo.name, price: 10)]
+                        ExtraHamburguesa(name: K.ExtraM.CarnePollo.name, price: 10),
+                        ExtraHamburguesa(name: K.ExtraM.Aguacate.name, price: 8)]
+    
+    let hotdog = [ExtraHamburguesa(name: K.ExtraM.Queso.name, price: 5),
+                  ExtraHamburguesa(name: K.ExtraM.Tocino.name, price: 15)]
     
     let ensaladas = [ExtraEnsaladas(name: K.ExtraM.Jamon.name, price: 12),
                      ExtraEnsaladas(name: K.ExtraM.Tocino.name, price: 25),
                      ExtraEnsaladas(name: K.ExtraM.Champinones.name, price: 12),
                      ExtraEnsaladas(name: K.ExtraM.Queso.name, price: 12),
-                     ExtraEnsaladas(name: K.ExtraM.PechugaPollo.name, price: 15)]
+                     ExtraEnsaladas(name: K.ExtraM.PechugaPollo.name, price: 15),
+                     ExtraEnsaladas(name: K.ExtraM.Aderezo.name, price: 5),
+                     ExtraEnsaladas(name: K.ExtraM.Aguacate.name, price: 8)]
+    
+    
+    //MARK: - Platillos
     
     let platillos = [ExtraPlatillos(name: K.ExtraM.Frijoles.name, price: 0),
                      ExtraPlatillos(name: K.ExtraM.Arroz.name, price: 15),
@@ -95,8 +108,40 @@ struct ExtraIngredientMenu {
                      ExtraPlatillos(name: K.ExtraM.PechugaPollo.name, price: 15),
                      ExtraPlatillos(name: K.ExtraM.Tocino.name, price: 25)]
     
+    let espagueti = [ExtraPlatillos(name: K.ExtraM.Pan.name, price: 6),
+                     ExtraPlatillos(name: K.ExtraM.Queso.name, price: 15),
+                     ExtraPlatillos(name: K.ExtraM.Camarones.name, price: 20),
+                     ExtraPlatillos(name: K.ExtraM.Salsa.name, price: 10)]
+    
+    let sopaTortilla = [ExtraPlatillos(name: K.ExtraM.Aguacate.name, price: 8),
+                        ExtraPlatillos(name: K.ExtraM.Queso.name, price: 15),
+                        ExtraPlatillos(name: K.ExtraM.Arroz.name, price: 15),
+                        ExtraPlatillos(name: K.ExtraM.Tortillas.name, price: 0),
+                        ExtraPlatillos(name: K.ExtraM.PechugaPollo.name, price: 15)]
+    
+    let enchiladas = [ExtraPlatillos(name: K.ExtraM.Frijoles.name, price: 0),
+                     ExtraPlatillos(name: K.ExtraM.Arroz.name, price: 15),
+                     ExtraPlatillos(name: K.ExtraM.Verdura.name, price: 0),
+                     ExtraPlatillos(name: K.ExtraM.Rajas.name, price: 8),
+                     ExtraPlatillos(name: K.ExtraM.PapasFrancesa.name, price: 11)]
+    
+    
+    //MARK: - Platillos
+    
     let mariscos = [ExtraMariscos(name: K.ExtraM.Camarones.name, price: 25),
-                    ExtraMariscos(name: K.ExtraM.Pan.name, price: 5)]
+                    ExtraMariscos(name: K.ExtraM.Pan.name, price: 5),
+                    ExtraMariscos(name: K.ExtraM.Aguacate.name, price: 8)]
+    
+    let filetes = [ExtraMariscos(name: K.ExtraM.Arroz.name, price: 15),
+                   ExtraMariscos(name: K.ExtraM.PapasFrancesa.name, price: 11),
+                   ExtraMariscos(name: K.ExtraM.Frijoles.name, price: 0),
+                   ExtraMariscos(name: K.ExtraM.Verdura.name, price: 0),
+                   ExtraMariscos(name: K.ExtraM.Aguacate.name, price: 8)]
+    
+    let camaronRanchero = [ExtraMariscos(name: K.ExtraM.Arroz.name, price: 15),
+                           ExtraMariscos(name: K.ExtraM.PapasFrancesa.name, price: 11),
+                           ExtraMariscos(name: K.ExtraM.Frijoles.name, price: 0),
+                           ExtraMariscos(name: K.ExtraM.Verdura.name, price: 0)]
     
     let others = [ExtraOthers(name: K.ExtraM.CarneRes.name, price: 10),
                   ExtraOthers(name: K.ExtraM.CarnePollo.name, price: 10),

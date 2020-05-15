@@ -27,7 +27,6 @@
 		B3744DB52444F8BA00186873 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3744DB32444F8BA00186873 /* OrderCell.swift */; };
 		B3744DB62444F8BA00186873 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3744DB42444F8BA00186873 /* OrderCell.xib */; };
 		B3744DB824451E5400186873 /* DetailOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3744DB724451E5400186873 /* DetailOrderViewController.swift */; };
-		B376F70923FB9EE400388446 /* HalfTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B376F70823FB9EE400388446 /* HalfTableViewController.swift */; };
 		B37A161B23F2564400B8607F /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37A161A23F2564400B8607F /* OrdersViewController.swift */; };
 		B37A161D23F2579700B8607F /* Orders.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37A161C23F2579700B8607F /* Orders.swift */; };
 		B37A161F23F25A8F00B8607F /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37A161E23F25A8F00B8607F /* Food.swift */; };
@@ -44,6 +43,7 @@
 		B391C74F23C1904800E821C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B391C74E23C1904800E821C5 /* SceneDelegate.swift */; };
 		B391C75423C1904800E821C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B391C75223C1904800E821C5 /* Main.storyboard */; };
 		B391C75923C1904900E821C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B391C75723C1904900E821C5 /* LaunchScreen.storyboard */; };
+		B3976C1D246E3FAF004D0E08 /* HalfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3976C1C246E3FAF004D0E08 /* HalfViewController.swift */; };
 		B39C5F622463B8F200607BA4 /* BreakfastsEggs2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39C5F612463B8F200607BA4 /* BreakfastsEggs2ViewController.swift */; };
 		B3A2486723EA6FD300D11FE6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A2486623EA6FD300D11FE6 /* RegisterViewController.swift */; };
 		B3A2486923EA8AE200D11FE6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A2486823EA8AE200D11FE6 /* LoginViewController.swift */; };
@@ -85,7 +85,6 @@
 		B3744DB32444F8BA00186873 /* OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		B3744DB42444F8BA00186873 /* OrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
 		B3744DB724451E5400186873 /* DetailOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailOrderViewController.swift; sourceTree = "<group>"; };
-		B376F70823FB9EE400388446 /* HalfTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfTableViewController.swift; sourceTree = "<group>"; };
 		B37A161A23F2564400B8607F /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
 		B37A161C23F2579700B8607F /* Orders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orders.swift; sourceTree = "<group>"; };
 		B37A161E23F25A8F00B8607F /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
@@ -105,6 +104,7 @@
 		B391C75323C1904800E821C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B391C75823C1904900E821C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B391C75A23C1904900E821C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3976C1C246E3FAF004D0E08 /* HalfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfViewController.swift; sourceTree = "<group>"; };
 		B3990B12244AB73200803EB8 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
 		B3990B13244AB73200803EB8 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		B39C5F612463B8F200607BA4 /* BreakfastsEggs2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakfastsEggs2ViewController.swift; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 				B33DBF1B240CBF5300E8AFBB /* DrinksViewController.swift */,
 				B3ED9BD02457DFC9004F1E60 /* KidsViewController.swift */,
 				B3A3404D23F4EFEE002F4224 /* ExtraIngredientViewController.swift */,
-				B376F70823FB9EE400388446 /* HalfTableViewController.swift */,
+				B3976C1C246E3FAF004D0E08 /* HalfViewController.swift */,
 				B3744DAF2444F69800186873 /* HistoryOrdersTableViewController.swift */,
 				B3744DB724451E5400186873 /* DetailOrderViewController.swift */,
 			);
@@ -396,7 +396,6 @@
 				B391C74D23C1904800E821C5 /* AppDelegate.swift in Sources */,
 				B3B9013923F1027C0023F39C /* WelcomeViewController.swift in Sources */,
 				B3AE4DD1244CF7850055A304 /* BreakfastsViewController.swift in Sources */,
-				B376F70923FB9EE400388446 /* HalfTableViewController.swift in Sources */,
 				B37A162523F2694F00B8607F /* PizzasViewController.swift in Sources */,
 				B369C81A24611A4B00EDCF65 /* BreakfastsEggsViewController.swift in Sources */,
 				B37A161D23F2579700B8607F /* Orders.swift in Sources */,
@@ -421,6 +420,7 @@
 				B3744DB02444F69800186873 /* HistoryOrdersTableViewController.swift in Sources */,
 				B3E17098244427C40019842F /* AppManager.swift in Sources */,
 				B3704C2023FCCFBD00D51C38 /* ListOrderCell.swift in Sources */,
+				B3976C1D246E3FAF004D0E08 /* HalfViewController.swift in Sources */,
 				B33DBF1C240CBF5300E8AFBB /* DrinksViewController.swift in Sources */,
 				B37A161B23F2564400B8607F /* OrdersViewController.swift in Sources */,
 				B3A2486923EA8AE200D11FE6 /* LoginViewController.swift in Sources */,

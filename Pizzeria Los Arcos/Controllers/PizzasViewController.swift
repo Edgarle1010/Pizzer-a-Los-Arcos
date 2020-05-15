@@ -8,6 +8,7 @@
 
 import UIKit
 import AudioToolbox
+import BonsaiController
 
 class PizzasViewController: UIViewController {
     
@@ -178,9 +179,7 @@ class PizzasViewController: UIViewController {
         }
         
         getTotal()
-        print(quantitySplit)
     }
-    
     
     @IBAction func extraIngredientValueChangue(_ sender: UIStepper) {
         if (sender.value>oldValue) {
@@ -188,8 +187,8 @@ class PizzasViewController: UIViewController {
             
             //Your Code You Wanted To Perform On Increment
             performSegue(withIdentifier: "PizzasToExtra", sender: self)
-        }
-        else {
+            
+        } else if (sender.value<oldValue) {
             oldValue=oldValue-1
             
             //Your Code You Wanted To Perform On Decrement
@@ -259,20 +258,23 @@ class PizzasViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PizzasToExtra" {
             let destinationVC = segue.destination as! ExtraIngredientViewController
-            destinationVC.isModalInPresentation = true
             destinationVC.sizeCurrent = sizeCurrent
             destinationVC.quantity = quantitySplit
             destinationVC.foodType = foodType
+            
+            segue.destination.transitioningDelegate = self
+            segue.destination.modalPresentationStyle = .custom
         }
         
         if segue.identifier == "PizzasToHalf" {
-            let destinationVC = segue.destination as! HalfTableViewController
+            let destinationVC = segue.destination as! HalfViewController
             destinationVC.isModalInPresentation = true
             destinationVC.pizzaSize = sizeCurrent
         }
     }
     
 }
+
 
 
 //MARK: - PickerView Data Source
@@ -308,4 +310,40 @@ extension PizzasViewController: UIPickerViewDelegate, UITextFieldDelegate {
         getTotal()
     }
     
+}
+
+//MARK: - Bonsai Framework
+extension PizzasViewController: BonsaiControllerDelegate {
+    
+    // return the frame of your Bonsai View Controller
+    func frameOfPresentedView(in containerViewFrame: CGRect) -> CGRect {
+        
+        return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 2), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / 2))
+    }
+    
+    // return a Bonsai Controller with SlideIn or Bubble transition animator
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+    
+        /// With Background Color ///
+    
+        // Slide animation from .left, .right, .top, .bottom
+        let bonsaiController = BonsaiController(fromDirection: .bottom, backgroundColor: UIColor(white: 0, alpha: 0.5), presentedViewController: presented, delegate: self)
+        
+        bonsaiController.isDisabledTapOutside = true
+        
+        return bonsaiController
+        
+        
+        // or Bubble animation initiated from a view
+        //return BonsaiController(fromView: yourOriginView, backgroundColor: UIColor(white: 0, alpha: 0.5), presentedViewController: presented, delegate: self)
+    
+    
+        /// With Blur Style ///
+        
+        // Slide animation from .left, .right, .top, .bottom
+        //return BonsaiController(fromDirection: .bottom, blurEffectStyle: .light, presentedViewController: presented, delegate: self)
+        
+        // or Bubble animation initiated from a view
+        //return BonsaiController(fromView: yourOriginView, blurEffectStyle: .dark,  presentedViewController: presented, delegate: self)
+    }
 }

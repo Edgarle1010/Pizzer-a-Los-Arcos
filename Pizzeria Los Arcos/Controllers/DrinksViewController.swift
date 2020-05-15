@@ -52,7 +52,7 @@ class DrinksViewController: UIViewController {
         } else if foodType == "Postres" {
             switch foodName {
             case K.Postres.PastelChocolateNieve.name, K.Postres.PayQuesoNieve.name, K.Postres.PayNuezNieve.name:
-                flavors = ["Vainilla", "Fresa", "Combinada"]
+                flavors = ["Vainilla", "Fresa", "Chocolate", "Vainilla/Fresa", "Chocolate/Vainilla"]
             default:
                 break
             }
@@ -61,7 +61,7 @@ class DrinksViewController: UIViewController {
             case K.NievesMalteadas.Malteada.name:
                 flavors = ["Piña colada", "Vainilla", "Fresa", "Chocolate"]
             default:
-                flavors = ["Vainilla", "Fresa", "Chocolate", "Combinada"]
+                flavors = ["Vainilla", "Fresa", "Chocolate", "Vainilla/Fresa", "Chocolate/Vainilla"]
                 break
             }
         }
@@ -88,9 +88,6 @@ class DrinksViewController: UIViewController {
         quantityTextField.inputAccessoryView = toolBar
         
         quantityPickerView.selectRow(Int(quantitySplit), inComponent: 0, animated: true)
-        
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
-        view.addGestureRecognizer(tap)
         
         getTotal()
     }
@@ -132,7 +129,15 @@ class DrinksViewController: UIViewController {
         
         switch foodType {
         case "Bebidas":
-            currentPrice = Double(food.bebidas.filter{$0.name == foodName}[0].price) * quantitySplit
+            if nameFlavor == "Nuez" {
+                currentPrice = 23 * quantitySplit
+            } else if nameFlavor == "Plátano" {
+                currentPrice = 20 * quantitySplit
+            } else if nameFlavor == "Mixto" {
+                currentPrice = 25 * quantitySplit
+            } else {
+                currentPrice = Double(food.bebidas.filter{$0.name == foodName}[0].price) * quantitySplit
+            }
         case "Postres":
             currentPrice = Double(food.postres.filter{$0.name == foodName}[0].price) * quantitySplit
         case "Nieves":
@@ -174,14 +179,11 @@ extension DrinksViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == self.pickerView {
             nameFlavor = flavors[row]
-            self.view.endEditing(true)
-            getTotal()
         } else {
             quantitySplit = Double(quantity[row])
             self.quantityTextField.text = String(format: "%.0f", quantitySplit)
-            self.view.endEditing(true)
-            getTotal()
         }
         
+        getTotal()
     }
 }
