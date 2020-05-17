@@ -161,7 +161,7 @@ class PizzasViewController: UIViewController {
         //Get the current title of the button that was pressed.
         if sender.currentTitle == halfAndHalfButton.titleLabel?.text! {
             
-            self.performSegue(withIdentifier: "PizzasToHalf", sender: self)
+            performSegue(withIdentifier: "PizzasToHalf", sender: self)
             
             disableSizeButtons()
             

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B30126C9244573D300A80C1A /* Pods_Pizzeria_Los_Arcos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3750D44A2B553E2E4B3AEC8E /* Pods_Pizzeria_Los_Arcos.framework */; };
+		B316BC792470D7DD00C22CE5 /* ScrambledEggsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316BC782470D7DD00C22CE5 /* ScrambledEggsViewController.swift */; };
 		B33DBF1C240CBF5300E8AFBB /* DrinksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33DBF1B240CBF5300E8AFBB /* DrinksViewController.swift */; };
 		B34820292400E103009BBEC5 /* FoodMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34820282400E103009BBEC5 /* FoodMenu.swift */; };
 		B352121E23F3991B0046A46E /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B352121C23F3991B0046A46E /* FoodCell.swift */; };
@@ -66,6 +67,7 @@
 		06EA3503E2432B1E9F33EC14 /* Pods-Pizzeria Los Arcos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pizzeria Los Arcos.release.xcconfig"; path = "Target Support Files/Pods-Pizzeria Los Arcos/Pods-Pizzeria Los Arcos.release.xcconfig"; sourceTree = "<group>"; };
 		180BEA9D03ED3D5B15223751 /* Pods-Pizzeria Los Arcos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pizzeria Los Arcos.debug.xcconfig"; path = "Target Support Files/Pods-Pizzeria Los Arcos/Pods-Pizzeria Los Arcos.debug.xcconfig"; sourceTree = "<group>"; };
 		3750D44A2B553E2E4B3AEC8E /* Pods_Pizzeria_Los_Arcos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pizzeria_Los_Arcos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B316BC782470D7DD00C22CE5 /* ScrambledEggsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrambledEggsViewController.swift; sourceTree = "<group>"; };
 		B33DBF1B240CBF5300E8AFBB /* DrinksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinksViewController.swift; sourceTree = "<group>"; };
 		B34820282400E103009BBEC5 /* FoodMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMenu.swift; sourceTree = "<group>"; };
 		B352121C23F3991B0046A46E /* FoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				B3ED9BD02457DFC9004F1E60 /* KidsViewController.swift */,
 				B3A3404D23F4EFEE002F4224 /* ExtraIngredientViewController.swift */,
 				B3976C1C246E3FAF004D0E08 /* HalfViewController.swift */,
+				B316BC782470D7DD00C22CE5 /* ScrambledEggsViewController.swift */,
 				B3744DAF2444F69800186873 /* HistoryOrdersTableViewController.swift */,
 				B3744DB724451E5400186873 /* DetailOrderViewController.swift */,
 			);
@@ -424,6 +427,7 @@
 				B33DBF1C240CBF5300E8AFBB /* DrinksViewController.swift in Sources */,
 				B37A161B23F2564400B8607F /* OrdersViewController.swift in Sources */,
 				B3A2486923EA8AE200D11FE6 /* LoginViewController.swift in Sources */,
+				B316BC792470D7DD00C22CE5 /* ScrambledEggsViewController.swift in Sources */,
 				B3744DB22444F82900186873 /* OrderHistory.swift in Sources */,
 				B3A2486723EA6FD300D11FE6 /* RegisterViewController.swift in Sources */,
 				B37EFD2323EE520C004B1A7A /* VericationCodeViewController.swift in Sources */,

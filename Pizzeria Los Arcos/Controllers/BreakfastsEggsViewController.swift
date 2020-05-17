@@ -15,6 +15,7 @@ class BreakfastsEggsViewController: UIViewController {
     @IBOutlet weak var halfOrderButton: UIButton!
     @IBOutlet weak var completeOrderButton: UIButton!
     @IBOutlet weak var scrambledStyleButton: UIButton!
+    @IBOutlet weak var scrambledIngredientLabel: UILabel!
     @IBOutlet weak var starryStyleButton: UIButton!
     @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var extraIngredientNumberLabel: UILabel!
@@ -38,6 +39,8 @@ class BreakfastsEggsViewController: UIViewController {
     var styleCurrent = "Estrellados"
     var currentPrice: Double = 0
     var extraPrice: Double = 0
+    var scrambledIngredient: String?
+    var scrambledIngredientPrice: Int = 0
     var extraIngredients = [String:Int]()
     
     override func viewDidLoad() {
@@ -72,9 +75,9 @@ class BreakfastsEggsViewController: UIViewController {
     func getTotal() {
         
         if sizeCurrent == "Media orden" {
-            currentPrice = ((Double(food.desayunos.filter{$0.name == foodName}[0].price) * 0.70) + extraPrice) * Double(quantitySplit)
+            currentPrice = ((Double(food.desayunos.filter{$0.name == foodName}[0].price) * 0.70) + extraPrice + Double(scrambledIngredientPrice)) * Double(quantitySplit)
         } else {
-            currentPrice = (Double(food.desayunos.filter{$0.name == foodName}[0].price) + extraPrice) * Double(quantitySplit)
+            currentPrice = (Double(food.desayunos.filter{$0.name == foodName}[0].price) + extraPrice + Double(scrambledIngredientPrice)) * Double(quantitySplit)
         }
         
         totalLabel.text = "$\(String(format: "%.2f", currentPrice))"
@@ -133,7 +136,19 @@ class BreakfastsEggsViewController: UIViewController {
         sender.isSelected = true
         
         //Get the current title of the button that was pressed.
+        
+        if sender.currentTitle == scrambledStyleButton.titleLabel?.text {
+            performSegue(withIdentifier: "EggsToScrambledEggs", sender: self)
+            
+        } else if sender.currentTitle == starryStyleButton.titleLabel?.text! {
+            scrambledIngredientLabel.text = ""
+            scrambledIngredient = scrambledIngredientLabel.text
+            scrambledIngredientPrice = 0
+        }
+        
         styleCurrent = sender.currentTitle!
+        
+        getTotal()
         
     }
     
@@ -177,7 +192,7 @@ class BreakfastsEggsViewController: UIViewController {
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
         
-        OrdersList.ordersList.append(Orders(foodName: "\(sizeCurrent): \(foodName!), \(styleCurrent)", quantity: Int(quantitySplit), extraIngredient: extraIngredients, price: currentPrice, comments: commentsTextView.text!))
+        OrdersList.ordersList.append(Orders(foodName: "\(sizeCurrent): \(foodName!), \(styleCurrent), \(scrambledIngredient ?? "")", quantity: Int(quantitySplit), extraIngredient: extraIngredients, price: currentPrice, comments: commentsTextView.text!))
         
         let encoder = PropertyListEncoder()
         
@@ -214,6 +229,11 @@ class BreakfastsEggsViewController: UIViewController {
             
             segue.destination.transitioningDelegate = self
             segue.destination.modalPresentationStyle = .custom
+        }
+        
+        if segue.identifier == "EggsToScrambledEggs" {
+            let destinationVC = segue.destination as! ScrambledEggsViewController
+            destinationVC.isModalInPresentation = true
         }
     }
     

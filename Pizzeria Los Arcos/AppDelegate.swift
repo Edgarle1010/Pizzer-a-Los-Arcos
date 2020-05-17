@@ -198,29 +198,29 @@ extension AuthErrorCode {
         var description: String? {
             switch self {
             case .cancelled:
-                return "Operación cancelada"
+                return "Operación cancelada."
             case .unknown:
-                return "Error desconocido"
+                return "Error desconocido."
             case .invalidArgument:
-                return "Argumento no valido"
+                return "Argumento no valido."
             case .notFound:
-                return "No se encotró el documento"
+                return "No se encotró el documento."
             case .alreadyExists:
-                return "El documento que se pretende crear ya existe"
+                return "El documento que se pretende crear ya existe."
             case .permissionDenied:
-                return "No tienes permisos para realizar esta operación"
+                return "No tienes permisos para realizar esta operación."
             case .aborted:
-                return "Operación abortada"
+                return "Operación abortada."
             case .outOfRange:
-                return "Rango invalido"
+                return "Rango invalido."
             case .unimplemented:
-                return "Esta operación no ha sido implementada o no es soportada aún"
+                return "Esta operación no ha sido implementada o no es soportada aún."
             case .internal:
-                return "Error interno"
+                return "Error interno."
             case .unavailable:
-                return "Por el momento el servicio no está disponible, intenta más tarde"
+                return "Por el momento el servicio no está disponible. Revisa tu conexión a internet o intenta más tarde."
             case .unauthenticated:
-                return "Usuario no autenticado"
+                return "Usuario no autenticado."
             default:
                 return nil
             }
