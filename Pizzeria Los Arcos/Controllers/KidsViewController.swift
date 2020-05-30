@@ -11,6 +11,7 @@ import AudioToolbox
 
 class KidsViewController: UIViewController {
     
+    @IBOutlet weak var orderDetailsLabel: UILabel!
     @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var commentsTextView: UITextView!
     @IBOutlet weak var totalLabel: UILabel!
@@ -30,6 +31,8 @@ class KidsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        orderDetailsLabel.text = foodName!
         
         let quantityPickerView = UIPickerView()
         quantityPickerView.backgroundColor = UIColor(named: "BrandLightBrow")

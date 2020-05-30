@@ -12,6 +12,7 @@ import BonsaiController
 
 class BreakfastsEggs2ViewController: UIViewController {
     
+    @IBOutlet weak var orderDetailsLabel: UILabel!
     @IBOutlet weak var halfOrderButton: UIButton!
     @IBOutlet weak var completeOrderButton: UIButton!
     @IBOutlet weak var section1: UILabel!
@@ -21,6 +22,9 @@ class BreakfastsEggs2ViewController: UIViewController {
     @IBOutlet weak var option1Section2: UIButton!
     @IBOutlet weak var option2Section2: UIButton!
     @IBOutlet weak var option3Section2: UIButton!
+    @IBOutlet weak var whiteBreadButton: UIButton!
+    @IBOutlet weak var wholemealBreadButton: UIButton!
+    @IBOutlet weak var baguetteButton: UIButton!
     @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var extraIngredientNumberLabel: UILabel!
     @IBOutlet weak var extraIngredientStepper: UIStepper!
@@ -51,12 +55,15 @@ class BreakfastsEggs2ViewController: UIViewController {
     var sizeCurrent = "Orden completa"
     var section1Current: String?
     var section2Current: String?
+    var breadCurrent = "Baguette"
     var currentPrice: Double = 0
     var extraPrice: Double = 0
     var extraIngredients = [String:Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        orderDetailsLabel.text = foodName!
         
         let quantityPickerView = UIPickerView()
         quantityPickerView.backgroundColor = UIColor(named: "BrandLightBrow")
@@ -113,9 +120,9 @@ class BreakfastsEggs2ViewController: UIViewController {
     func getTotal() {
         
         if sizeCurrent == "Media orden" {
-            currentPrice = ((Double(food.desayunos.filter{$0.name == foodName}[0].price) * 0.70) + extraPrice) * Double(quantitySplit)
+            currentPrice = ((Double(food.desayunos.filter{$0.name == foodName}[0].price) * 0.70) * Double(quantitySplit)) + Double(extraPrice)
         } else {
-            currentPrice = (Double(food.desayunos.filter{$0.name == foodName}[0].price) + extraPrice) * Double(quantitySplit)
+            currentPrice = (Double(food.desayunos.filter{$0.name == foodName}[0].price) * Double(quantitySplit)) + Double(extraPrice)
         }
         
         totalLabel.text = "$\(String(format: "%.2f", currentPrice))"
@@ -209,6 +216,22 @@ class BreakfastsEggs2ViewController: UIViewController {
         section2Current = sender.currentTitle!
     }
     
+    @IBAction func breadChange(_ sender: UIButton) {
+        
+        //Diselect all size buttons via IBOutlets
+        whiteBreadButton.isSelected = false
+        wholemealBreadButton.isSelected = false
+        baguetteButton.isSelected = false
+        
+        //Make the button that triggered the IBAction selected.
+        sender.isSelected = true
+        
+        //Get the current title of the button that was pressed.
+        breadCurrent = sender.currentTitle!
+        
+        getTotal()
+    }
+    
     @IBAction func extraIngredientValueChanged(_ sender: UIStepper) {
         
         if (sender.value>oldValue) {
@@ -251,7 +274,7 @@ class BreakfastsEggs2ViewController: UIViewController {
         
         guard let section1 = section1Current, let section2 = section2Current else { fatalError() }
         
-        OrdersList.ordersList.append(Orders(foodName: "\(sizeCurrent): \(foodName!), \(section1), \(section2)", quantity: Int(quantitySplit), extraIngredient: extraIngredients, price: currentPrice, comments: commentsTextView.text!))
+        OrdersList.ordersList.append(Orders(foodName: "\(sizeCurrent): \(foodName!), \(section1), \(section2), Pan \(breadCurrent)", quantity: Int(quantitySplit), extraIngredient: extraIngredients, price: currentPrice, comments: commentsTextView.text!))
         
         let encoder = PropertyListEncoder()
         

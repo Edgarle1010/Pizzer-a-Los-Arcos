@@ -12,6 +12,7 @@ import BonsaiController
 
 class PizzasViewController: UIViewController {
     
+    @IBOutlet weak var orderDetailsLabel: UILabel!
     @IBOutlet weak var smallPctButton: UIButton!
     @IBOutlet weak var mediumPctButton: UIButton!
     @IBOutlet weak var bigPctButton: UIButton!
@@ -46,6 +47,8 @@ class PizzasViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        orderDetailsLabel.text = foodName!
         
         let quantityPickerView = UIPickerView()
         quantityPickerView.backgroundColor = UIColor(named: "BrandLightBrow")
@@ -269,6 +272,8 @@ class PizzasViewController: UIViewController {
         if segue.identifier == "PizzasToHalf" {
             let destinationVC = segue.destination as! HalfViewController
             destinationVC.isModalInPresentation = true
+            destinationVC.nameFirstHalf = foodName
+            destinationVC.priceFirstHalf = Double(food.getPizzaPrice(name: foodName!, size: sizeCurrent))
             destinationVC.pizzaSize = sizeCurrent
         }
     }

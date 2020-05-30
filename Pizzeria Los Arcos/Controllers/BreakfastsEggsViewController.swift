@@ -12,11 +12,15 @@ import BonsaiController
 
 class BreakfastsEggsViewController: UIViewController {
     
+    @IBOutlet weak var orderDetailsLabel: UILabel!
     @IBOutlet weak var halfOrderButton: UIButton!
     @IBOutlet weak var completeOrderButton: UIButton!
     @IBOutlet weak var scrambledStyleButton: UIButton!
     @IBOutlet weak var scrambledIngredientLabel: UILabel!
     @IBOutlet weak var starryStyleButton: UIButton!
+    @IBOutlet weak var whiteBreadButton: UIButton!
+    @IBOutlet weak var baguetteButton: UIButton!
+    @IBOutlet weak var wholemealBreadButton: UIButton!
     @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var extraIngredientNumberLabel: UILabel!
     @IBOutlet weak var extraIngredientStepper: UIStepper!
@@ -37,6 +41,7 @@ class BreakfastsEggsViewController: UIViewController {
     
     var sizeCurrent = "Orden completa"
     var styleCurrent = "Estrellados"
+    var breadCurrent = "Baguette"
     var currentPrice: Double = 0
     var extraPrice: Double = 0
     var scrambledIngredient: String?
@@ -45,6 +50,8 @@ class BreakfastsEggsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        orderDetailsLabel.text = foodName!
         
         let quantityPickerView = UIPickerView()
         quantityPickerView.backgroundColor = UIColor(named: "BrandLightBrow")
@@ -75,9 +82,9 @@ class BreakfastsEggsViewController: UIViewController {
     func getTotal() {
         
         if sizeCurrent == "Media orden" {
-            currentPrice = ((Double(food.desayunos.filter{$0.name == foodName}[0].price) * 0.70) + extraPrice + Double(scrambledIngredientPrice)) * Double(quantitySplit)
+            currentPrice = (((Double(food.desayunos.filter{$0.name == foodName}[0].price) * 0.70) + Double(scrambledIngredientPrice)) * Double(quantitySplit)) + Double(extraPrice)
         } else {
-            currentPrice = (Double(food.desayunos.filter{$0.name == foodName}[0].price) + extraPrice + Double(scrambledIngredientPrice)) * Double(quantitySplit)
+            currentPrice = (Double(food.desayunos.filter{$0.name == foodName}[0].price + scrambledIngredientPrice) * Double(quantitySplit)) + Double(extraPrice)
         }
         
         totalLabel.text = "$\(String(format: "%.2f", currentPrice))"
@@ -138,9 +145,11 @@ class BreakfastsEggsViewController: UIViewController {
         //Get the current title of the button that was pressed.
         
         if sender.currentTitle == scrambledStyleButton.titleLabel?.text {
+            scrambledStyleButton.isEnabled = false
             performSegue(withIdentifier: "EggsToScrambledEggs", sender: self)
             
         } else if sender.currentTitle == starryStyleButton.titleLabel?.text! {
+            scrambledStyleButton.isEnabled = true
             scrambledIngredientLabel.text = ""
             scrambledIngredient = scrambledIngredientLabel.text
             scrambledIngredientPrice = 0
@@ -150,6 +159,22 @@ class BreakfastsEggsViewController: UIViewController {
         
         getTotal()
         
+    }
+    
+    @IBAction func breadChange(_ sender: UIButton) {
+        
+        //Diselect all size buttons via IBOutlets
+        whiteBreadButton.isSelected = false
+        wholemealBreadButton.isSelected = false
+        baguetteButton.isSelected = false
+        
+        //Make the button that triggered the IBAction selected.
+        sender.isSelected = true
+        
+        //Get the current title of the button that was pressed.
+        breadCurrent = sender.currentTitle!
+        
+        getTotal()
     }
     
     @IBAction func extraIngredientValueChanged(_ sender: UIStepper) {
@@ -192,7 +217,7 @@ class BreakfastsEggsViewController: UIViewController {
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
         
-        OrdersList.ordersList.append(Orders(foodName: "\(sizeCurrent): \(foodName!), \(styleCurrent), \(scrambledIngredient ?? "")", quantity: Int(quantitySplit), extraIngredient: extraIngredients, price: currentPrice, comments: commentsTextView.text!))
+        OrdersList.ordersList.append(Orders(foodName: "\(sizeCurrent): \(foodName!), \(styleCurrent), \(scrambledIngredient ?? ""), Pan \(breadCurrent)", quantity: Int(quantitySplit), extraIngredient: extraIngredients, price: currentPrice, comments: commentsTextView.text!))
         
         let encoder = PropertyListEncoder()
         

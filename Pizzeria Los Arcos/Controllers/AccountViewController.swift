@@ -54,20 +54,25 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func logOutPressed(_ sender: UIButton) {
         
-        do {
-            try Auth.auth().signOut()
-            
-            let domain = Bundle.main.bundleIdentifier!
-            UserDefaults.standard.removePersistentDomain(forName: domain)
-            UserDefaults.standard.synchronize()
-            print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
-            
-            removeImage(itemName: "Items", fileExtension: "plist")
-            
-            navigationController?.popToRootViewController(animated: true)
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
+        let alert = UIAlertController(title: "¿Quieres salir de tu cuenta?", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Volver", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Sí, salir", style: .cancel, handler: { (action) in
+            do {
+                try Auth.auth().signOut()
+                
+                let domain = Bundle.main.bundleIdentifier!
+                UserDefaults.standard.removePersistentDomain(forName: domain)
+                UserDefaults.standard.synchronize()
+                print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
+                
+                self.removeImage(itemName: "Items", fileExtension: "plist")
+                
+                self.navigationController?.popToRootViewController(animated: true)
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
+        }))
+        self.present(alert, animated: true)
     }
     
     func removeImage(itemName:String, fileExtension: String) {

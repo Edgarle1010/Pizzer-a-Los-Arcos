@@ -12,6 +12,7 @@ import BonsaiController
 
 class SaucersViewController: UIViewController {
 
+    @IBOutlet weak var orderDetailsLabel: UILabel!
     @IBOutlet weak var hastButton: UIButton!
     @IBOutlet weak var chickenButton: UIButton!
     @IBOutlet weak var cheeseButton: UIButton!
@@ -41,6 +42,8 @@ class SaucersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        orderDetailsLabel.text = foodName!
+        
         let quantityPickerView = UIPickerView()
         quantityPickerView.backgroundColor = UIColor(named: "BrandLightBrow")
         quantityPickerView.delegate = self
@@ -69,7 +72,7 @@ class SaucersViewController: UIViewController {
     
     func getTotal() {
         
-        currentPrice = (Double(food.platillos.filter{$0.name == foodName}[0].price) + extraPrice) * Double(quantitySplit)
+        currentPrice = (Double(food.platillos.filter{$0.name == foodName}[0].price) * Double(quantitySplit)) + Double(extraPrice)
         
         totalLabel.text = "$\(String(format: "%.2f", currentPrice))"
     }

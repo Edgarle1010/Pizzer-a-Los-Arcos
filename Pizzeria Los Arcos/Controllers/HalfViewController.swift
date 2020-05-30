@@ -13,6 +13,8 @@ class HalfViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     
     var pizzasList = FoodMenu()
+    var nameFirstHalf: String?
+    var priceFirstHalf: Double?
     var pizzaName: String?
     var pizzaPrice: Double?
     var pizzaSize: String?
@@ -61,7 +63,7 @@ class HalfViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if let backVC = presentingViewController as? PizzasViewController {
             if let pName = pizzaName, let pPrice = pizzaPrice {
-                backVC.halfLabel.text = "Mitad: \(pName) ($\(pPrice))"
+                backVC.halfLabel.text = "Mitad: \(nameFirstHalf!) ($\(priceFirstHalf! / 2))\n Mitad: \(pName) ($\(pPrice))"
                 backVC.halfPrice = Double(pPrice)
                 backVC.halfName = pName
                 backVC.viewDidLoad()

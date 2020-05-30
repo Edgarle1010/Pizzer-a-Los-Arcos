@@ -12,6 +12,7 @@ import BonsaiController
 
 class BurgerViewController: UIViewController {
     
+    @IBOutlet weak var orderDetailsLabel: UILabel!
     @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var extraIngredientNumberLabel: UILabel!
     @IBOutlet weak var extraIngredientStepper: UIStepper!
@@ -38,6 +39,8 @@ class BurgerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        orderDetailsLabel.text = foodName!
         
         let quantityPickerView = UIPickerView()
         quantityPickerView.backgroundColor = UIColor(named: "BrandLightBrow")
@@ -136,13 +139,13 @@ class BurgerViewController: UIViewController {
         
         switch foodType {
         case "Hamburguesas":
-            currentPrice = Double(food.hamburguesas.filter{$0.name == foodName}[0].price + extraPrice) * quantitySplit
+            currentPrice = (Double(food.hamburguesas.filter{$0.name == foodName}[0].price) * quantitySplit) + Double(extraPrice)
         case "Ensaladas":
-            currentPrice = Double(food.ensaladas.filter{$0.name == foodName}[0].price + extraPrice) * quantitySplit
+            currentPrice = (Double(food.ensaladas.filter{$0.name == foodName}[0].price) * quantitySplit) + Double(extraPrice)
         case "Platillos":
-            currentPrice = Double(food.platillos.filter{$0.name == foodName}[0].price + extraPrice) * quantitySplit
+            currentPrice = (Double(food.platillos.filter{$0.name == foodName}[0].price) * quantitySplit) + Double(extraPrice)
         case "Mariscos":
-            currentPrice = Double(food.mariscos.filter{$0.name == foodName}[0].price + extraPrice) * quantitySplit
+            currentPrice = (Double(food.mariscos.filter{$0.name == foodName}[0].price) * quantitySplit) + Double(extraPrice)
         default: break
         }
         

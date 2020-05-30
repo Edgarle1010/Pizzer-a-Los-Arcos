@@ -11,6 +11,7 @@ import AudioToolbox
 
 class DrinksViewController: UIViewController {
     
+    @IBOutlet weak var orderDetailsLabel: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var commentsTextView: UITextView!
@@ -32,6 +33,8 @@ class DrinksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        orderDetailsLabel.text = foodName!
         
         if foodType == "Bebidas" {
             switch foodName {

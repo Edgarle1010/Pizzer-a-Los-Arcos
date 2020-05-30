@@ -18,5 +18,6 @@ target 'Pizzeria Los Arcos' do
   
   pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
   pod 'BonsaiController'
+  pod 'Toast-Swift', '~> 5.0.1'
 
 end

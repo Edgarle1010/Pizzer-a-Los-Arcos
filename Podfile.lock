@@ -299,6 +299,7 @@ PODS:
   - SVProgressHUD (2.2.6):
     - SVProgressHUD/Core (= 2.2.6)
   - SVProgressHUD/Core (2.2.6)
+  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - BonsaiController
@@ -309,6 +310,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - FirebaseFirestoreSwift
   - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
+  - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
@@ -339,6 +341,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - Protobuf
+    - Toast-Swift
 
 EXTERNAL SOURCES:
   SVProgressHUD:
@@ -378,7 +381,8 @@ SPEC CHECKSUMS:
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
   SVProgressHUD: de812b4f0e1d65358f0064416473174ae619843f
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 92ea42c4c5877e1bf0a810d7b5bf3b9608467d48
+PODFILE CHECKSUM: ba1b510530ba571c3cfbecc39fa6c5ab86505029
 
 COCOAPODS: 1.8.4

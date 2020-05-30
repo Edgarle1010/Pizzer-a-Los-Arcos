@@ -11,6 +11,7 @@ import Firebase
 import AudioToolbox
 import CoreLocation
 import SVProgressHUD
+import Toast_Swift
 
 class OrdersViewController: UIViewController {
     
@@ -32,6 +33,8 @@ class OrdersViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.makeToast("Desliza hacia la izquierda cualquier producto si deseas eliminarlo.", duration: 2.0, position: .center)
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -55,7 +58,6 @@ class OrdersViewController: UIViewController {
         self.tableView.reloadData()
         
         getTotal()
-        
     }
     
     func getTotal() {
@@ -368,3 +370,5 @@ extension OrdersViewController: CLLocationManagerDelegate {
         print(error)
     }
 }
+
+
